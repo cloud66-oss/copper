@@ -24,7 +24,7 @@ Copper files contain the Copper DSL script. They have text files and have a `.co
 A rule is like a test you would like to run against your configuration file. Just like code unit tests, it's better to keep the rules focused on one specific area of the configuration file and give then relevant names. A Copper file can contain as many rules as you like.
 
 #### Name
-A rule must have a name. Names should begin with a letter and can container any alphanumerical characters.
+A rule must have a name. Names should begin with a letter and can contain any alphanumerical characters.
 
 #### Action
 A rule must have an Action. Action is what should happen if the rule fails: An `ensure` action means failure of the rule will fail the validation. A `warn` action means a warning is shown next to the failed rule but the validations will pass.
@@ -536,4 +536,3 @@ rule foo warn {
 	fetch("$.spec.ports..targetPort") -> console
 }
 </pre>
-
