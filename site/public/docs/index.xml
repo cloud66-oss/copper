@@ -29,7 +29,7 @@ Copper Syntax Highlighting There is an extension for VisualStudio Code that prov
       
       <guid>http://copper.sh/docs/getting-started/</guid>
       <description>Overview Copper validates configuration files using Rules. Rules are descriptions of what you would like to see (or don&amp;rsquo;t see) in a configuration file. You can think of Rules like code unit tests, but for configuration.
-Installation Copper is available as a Ruby gem. We recommend installig Copper using Rubygems.
+Installation Copper is available as a Ruby gem. We recommend installing Copper using Rubygems.
 To install Copper, use the following command:
  $ gem install copper 
 You should now be able to run $ copper version successfully.</description>

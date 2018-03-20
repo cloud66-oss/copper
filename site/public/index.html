@@ -128,20 +128,21 @@
         <p>
             We built Copper to achive 2 main goals:
             <ol>
-                <li>Let developers make changes to Kubernetes configuration files as they needed</li>
+                <li>Let developers make changes to Kubernetes configuration files as they needed instead of restricting what they can do with another layer of APIs on top of it.</li>
                 <li>Make sure all configuration files applied to our Kubernetes clusters are tested and adhere to our infrastructure policies.</li>
             </ol>
+            In short, we thought if <i>infrastructure as code</i> is the right way to go, then we need to apply the same principles we use for code to infrastructure configuration as well.
         </p>
         <p>
-            If you use systems like Kubernetes, commit configuration files into a code repository and want to rest peacfully at night knowing your configurations are always tested, then you need Copper.
+            If you use systems like Kubernetes, commit configuration files into a code repository and want to rest peacefully at night knowing your configurations are always tested, then you need Copper.
         </p>
 
         <h4>What to validate with Kubernetes configuration files?</h4>
         <p>
-            These are some of the things we check in our configuration files committed into your git repository:
+            These are some of the things we check in our configuration files committed into our git repository:
             <ul>
                 <li><code>latest</code> is not used as the image tag for any Deployment</li>
-                <li>Image versions are not changed for imporant components (like databases) except for minor versions and patches.</li>
+                <li>Image versions are not changed for important components (like databases) except for minor versions and patches.</li>
                 <li>Load balancer IP address is not changed in Service configuration by mistake</li>
                 <li>Any fixed IP address used is within a valid range</li>
                 <li>No secret is committed into the configuration repository (we use <a href="http://gifnoc.com/">Gifnoc</a> to replace those later on a secure machine).</li>
@@ -220,7 +221,7 @@ Validating part 0
       <ul>
         <li><span>Copper</span></li>
         <li>
-          <a href="/company/">Company</a>
+          <a href="https://cloud66.com/">Company</a>
         </li>
           <li>
           <a href="/docs/">Docs</a>

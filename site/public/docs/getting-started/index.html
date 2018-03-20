@@ -126,7 +126,7 @@
 
 <h2 id="installation">Installation</h2>
 
-<p>Copper is available as a Ruby gem. We recommend installig Copper using Rubygems.</p>
+<p>Copper is available as a Ruby gem. We recommend installing Copper using Rubygems.</p>
 
 <p>To install Copper, use the following command:</p>
 
@@ -144,7 +144,7 @@ $ gem install copper
 
 <h2 id="writing-your-first-rule-file">Writing your first rule file</h2>
 
-<p>Open up your favourite text editor and enter the following text into a new file called <code>my_rule.cop</code>:</p>
+<p>Open up your favorite text editor and enter the following text into a new file called <code>my_rule.cop</code>:</p>
 
 <pre class="prettyprint linenums">
 rule ApiV1Only ensure {
@@ -160,7 +160,7 @@ rule ApiV1Only ensure {
 
 <h2 id="validate-with-your-first-rule">Validate with your first rule</h2>
 
-<p>Now that you have the rule to check for the API version, let&rsquo;s have a look at the configuraiton file. If you have a Kubernetes configuration file, you can use this rule against that (as all Kubernetes configuration files have the <code>apiVersion</code> attribute). Here is an example you can use:</p>
+<p>Now that you have the rule to check for the API version, let&rsquo;s have a look at the configuration file. If you have a Kubernetes configuration file, you can use this rule against that (as all Kubernetes configuration files have the <code>apiVersion</code> attribute). Here is an example you can use:</p>
 
 <pre class="prettyprint">
 apiVersion: v1
@@ -192,7 +192,7 @@ Validating part 0
     ApiV1Only - PASS
 </pre>
 
-<p><strong>Line 1</strong>: Copper CLI can read multipart YAML files, separated by <code>---</code>. <code>Validating part 0</code> means Copper is now validating the first part of the YAML configuration file. As our configuration file only has 1 part, we are only going to see <code>Validation part 0</code>.</p>
+<p><strong>Line 1</strong>: Copper CLI can read multi-part YAML files, separated by <code>---</code>. <code>Validating part 0</code> means Copper is now validating the first part of the YAML configuration file. As our configuration file only has 1 part, we are only going to see <code>Validation part 0</code>.</p>
 
 <p><strong>Line 2</strong>: This line shows that rule <code>ApiV1Only</code> has passed the validation successfully.</p>
 

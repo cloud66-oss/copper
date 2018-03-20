@@ -39,7 +39,7 @@ Copper Syntax Highlighting There is an extension for VisualStudio Code that prov
       
       <guid>http://copper.sh/docs/getting-started/</guid>
       <description>Overview Copper validates configuration files using Rules. Rules are descriptions of what you would like to see (or don&amp;rsquo;t see) in a configuration file. You can think of Rules like code unit tests, but for configuration.
-Installation Copper is available as a Ruby gem. We recommend installig Copper using Rubygems.
+Installation Copper is available as a Ruby gem. We recommend installing Copper using Rubygems.
 To install Copper, use the following command:
  $ gem install copper 
 You should now be able to run $ copper version successfully.</description>
@@ -103,15 +103,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION 1. Definitions &amp
       
       <guid>http://copper.sh/blog/inline-style/</guid>
       <description>Chocolate tiramisu pastry a link cotton candy sesame snaps. Dessert cake chocolate bar a bold part sugar plum bonbon marshmallow lollipop toffee soufflé. Donut caramels chocolate bar. Oat cake cookie a marked part cheesecake donut. Jelly-o  $code marzipan cake. Bonbon sesame snaps chocolate an italic part oat cake pudding sweet roll caramels bonbon. Soufflé muffin 👻 gummies sugar plum dessert bonbon bear claw. Sweet ice cream jujubes. Marzipan sugar plum pastry chocolate ⌘+A bar fruitcake.</description>
-    </item>
-    
-    <item>
-      <title>Cloud 66</title>
-      <link>http://copper.sh/company/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://copper.sh/company/</guid>
-      <description></description>
     </item>
     
   </channel>

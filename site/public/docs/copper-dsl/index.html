@@ -227,11 +227,11 @@ rule bar ensure {
 }*/
 </pre>
 
-<h3 id="comparisions">Comparisions</h3>
+<h3 id="comparisons">Comparisons</h3>
 
 <p>The condition inside of a rule is usually made up of a value compared against another value. The result of this comparison is either true or false.</p>
 
-<p>The comparision operation can be one of the following:</p>
+<p>The comparison operation can be one of the following:</p>
 
 <table class="striped">
     <tr><th>Operation</th><th>Meaning</th></tr>
@@ -356,7 +356,7 @@ var my_array = [1,2,3,4]
 
 <h5 id="inclusion">Inclusion</h5>
 
-<p>You can use the <code>in</code> comparision for arrays: <code>1 in [1,2,3]</code> is true and <code>&quot;foo&quot; in [&quot;bar&quot;, &quot;fuzz&quot;]</code> is false.</p>
+<p>You can use the <code>in</code> comparison for arrays: <code>1 in [1,2,3]</code> is true and <code>&quot;foo&quot; in [&quot;bar&quot;, &quot;fuzz&quot;]</code> is false.</p>
 
 <h4 id="range">Range</h4>
 
@@ -373,7 +373,7 @@ var the_range = (1..10)
 
 <h5 id="inclusion-1">Inclusion</h5>
 
-<p>You can use the <code>in</code> comparision for ranges: <code>10 in (1..10)</code> is true and <code>13 in (23..45)</code> is false.</p>
+<p>You can use the <code>in</code> comparison for ranges: <code>10 in (1..10)</code> is true and <code>13 in (23..45)</code> is false.</p>
 
 <h3 id="complex-data-types">Complex data types</h3>
 
@@ -381,7 +381,7 @@ var the_range = (1..10)
 
 <h4 id="ipaddress">IPAddress</h4>
 
-<p>An IPaddress can hold an IP address and/or subnet. You can use IPAddress to check various things about an IPAddress, like it&rsquo;s range, inclusion of other IP addresses, its class and more.</p>
+<p>An IPAddress can hold an IP address and/or subnet. You can use IPAddress to check various things about an IPAddress, like it&rsquo;s range, inclusion of other IP addresses, its class and more.</p>
 
 <p><strong>Example</strong>
 <pre class="prettyprint">
@@ -429,7 +429,7 @@ var front_end = ipaddress(&ldquo;62.0.2.45&rdquo;)
 
 <h5><span class="code-attribute">is_multicast</span></h5>
 
-<p>Returns true if the given IP address is a multicase address. <code>ipaddress(&quot;224.0.0.1/32&quot;).is_multicast</code> will return true.</p>
+<p>Returns true if the given IP address is a multicast address. <code>ipaddress(&quot;224.0.0.1/32&quot;).is_multicast</code> will return true.</p>
 
 <h5><span class="code-attribute">is_class_a</span></h5>
 
@@ -437,7 +437,7 @@ var front_end = ipaddress(&ldquo;62.0.2.45&rdquo;)
 
 <h5 id="inclusion-2">Inclusion</h5>
 
-<p>Inclusion of an IP address in a network IP range can be checked using the <code>in</code> comparision. For example <code>ipaddress(&quot;10.1.1.32&quot;) in ipaddress(&quot;10.1.1.0/24&quot;)</code> returns true.</p>
+<p>Inclusion of an IP address in a network IP range can be checked using the <code>in</code> comparison. For example <code>ipaddress(&quot;10.1.1.32&quot;) in ipaddress(&quot;10.1.1.0/24&quot;)</code> returns true.</p>
 
 <h5><span class="code-attribute">is_class_b</span></h5>
 
@@ -483,7 +483,7 @@ var web_server = semver(&ldquo;1.2.4-pre&rdquo;)
 
 <h5 id="comparison">Comparison</h5>
 
-<p>You can use <code>&lt;</code>, <code>&gt;</code>, <code>=</code>, <code>==</code>, <code>&lt;=</code>, <code>&gt;=</code> and <code>!=</code> comparisions betwene two semvers.</p>
+<p>You can use <code>&lt;</code>, <code>&gt;</code>, <code>=</code>, <code>==</code>, <code>&lt;=</code>, <code>&gt;=</code> and <code>!=</code> comparisons between two semvers.</p>
 
 <h3 id="type-conversion-and-parsing">Type conversion and parsing</h3>
 
