@@ -1,0 +1,96 @@
+#!/usr/bin/env ruby
+require 'thor'
+require 'yaml'
+require 'colorize'
+require_relative '../lib/copper'
+
+module Copper
+	class CopperCLI < Thor
+		package_name "copper"
+
+		desc "version", "Show Copper version"
+		def version
+			say "#{::Copper::APP_NAME} #{::Copper::VERSION}\n#{::Copper::COPYRIGHT_MESSAGE}"
+		end
+
+		desc "update", "Update Copper to the latest version"
+		option :version, type: :string, desc: "Force a specific version"
+		def update
+			say "Updating Copper..."
+			unless options[:version]
+				say `gem install copper --no-ri --no-rdoc`
+			else
+				say `gem install copper -v #{options[:version]} --no-ri --no-rdoc`
+			end
+		end
+
+		desc "check", "Runs the given rules against a file"
+		option :rules, type: :string, desc: "Rules in ccop file format"
+		option :file, type: :string, desc: "Configuration file"
+		option :format, type: :string, enum: ['yaml'], default: 'yaml'
+		option :debug, type: :boolean, default: false
+		option :'parserdebug', type: :boolean, default: false
+		def check
+			$debug = options[:debug] || false
+			$parser_debug = options[:'parserdebug'] || false
+			require 'byebug' if $debug
+
+			rule_file = options[:rules]
+			unless File.exists?(rule_file)
+				puts "Rule file #{rule_file} not found".red
+				exit(1)
+			end
+			content_file = options[:file]
+			unless File.exists?(content_file)
+				puts "Config file #{content_file} not found".red
+				exit(1)
+			end
+
+			rules = File.read(rule_file)
+			file = ""
+			raise ::NotImplementedError if options[:format] != 'yaml'
+			# load the yaml file and split them into separate yamls
+
+			content = File.read(content_file)
+			content.split('---').each_with_index do |part, idx|
+				puts "Validating part #{idx}"
+				file = YAML::load(part)
+				validate(rules, file)
+			end
+		end
+
+		no_commands {
+		def validate(rules, file)
+			ccop = ::Copper::Copper.new(rules, { context: file })
+			results = ccop.execute
+
+			if results.nil?
+				puts "Aborting"
+				exit
+			end
+
+			results.each do |rule|
+				action = rule[:action]
+				outcome = rule[:outcome]
+				if !outcome
+					if action == :warn
+						outcome_text = 'WARN'.yellow
+					else
+						outcome_text = 'FAIL'.red
+					end
+				else
+					outcome_text = 'PASS'.green
+				end
+				puts "\t#{rule[:name]} - #{outcome_text}"
+			end
+		rescue ::Copper::ParseError => exc
+			puts "Syntax error: #{exc.message} at line #{ccop.parser.failure_line}, column: #{ccop.parser.failure_column}"
+		rescue ::Copper::RuntimeError => exc
+			puts "Runtime error: #{exc.message}"
+		end
+		}
+
+	end
+
+	CopperCLI.start
+end

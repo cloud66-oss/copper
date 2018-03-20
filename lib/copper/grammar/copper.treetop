@@ -1,0 +1,161 @@
+grammar Copper
+
+	rule root
+		(var_definition / rule_definition / comment / comment_block)+ <Root>
+	end
+
+	rule comment
+		s '//' (![\n\r] .)* [\n\r]
+	end
+
+	rule comment_block
+		s '/*' (!'*/' .)* '*/' s
+	end
+
+	rule rule_definition
+		s 'rule' s identifier s action s '{' sn
+			logic sn
+		'}' sn
+		<RuleDefinition>
+	end
+
+	rule var_definition
+		s 'var' s single_var_definition
+		<VarDefinition>
+	end
+
+	rule single_var_definition
+		s identifier s '=' s expression sn <SingleVarDefinition>
+	end
+
+	rule logic
+		s comparison s (logic_right_associated)? sn <Logic>
+	end
+
+	rule range
+		s '(' s expression s '..' s expression s ')' (attributes)? <Range>
+	end
+
+	rule expression
+		s (string / number / boolean / func / variable / set / range) <Expression>
+	end
+
+	rule logic_right_associated
+		logic_op sn logic <LogicRightAssociated>
+	end
+
+	rule action
+		'ensure' <Action>
+	  / 'warn' <Action>
+	end
+
+	rule logic_op
+		  'and' <LogicOp>
+		/ '&' <LogicOp>
+		/  '&&' <LogicOp>
+		/ 'or' <LogicOp>
+		/ '|' <LogicOp>
+		/ '||' <LogicOp>
+		/ '->' <CompOp>
+	end
+
+	rule comparison
+		s expression s comp_op s expression <Comparison>
+	  / s boolean <Boolean>
+	end
+
+	rule func
+		(fetch_func / func_ipaddress)
+	end
+
+	rule fetch_func
+		'fetch' s '(' s (string / variable) s ')' (attributes)? <Functions::Fetch>
+	end
+
+	rule func_ipaddress
+		'ipaddress' s '(' (string / variable) s ')' (attributes)? <Functions::IPAddress>
+	end
+
+	rule attributes
+		sn '.' attribute (attributes_right_associated)? <Attributes>
+	end
+
+	rule attributes_right_associated
+		(attributes) <AttributesRightAssociated>
+	end
+
+	rule attribute
+		identifier attribute_params? <Attribute>
+	end
+
+	rule params
+		s expression s (param_right_associated)? <Param>
+	end
+
+	rule param_right_associated
+		',' s params <ParamRightAssociated>
+	end
+
+	rule attribute_params
+		s '(' s (params) s ')' <AttributeParams>
+	end
+
+	rule set
+		s '[' (params) s ']' (attributes)? <Set>
+	end
+
+	rule variable_identifier
+		[a-zA-Z] [a-zA-Z0-9_]* <VariableIdentifier>
+	end
+
+	rule variable
+		variable_identifier (attributes)? <Variable>
+	end
+
+	rule identifier
+		[a-zA-Z] [a-zA-Z0-9_]* <Identifier>
+	end
+
+	rule number
+		[0-9]+ <Number>
+	end
+
+	rule comp_op
+		'<=' <CompOp>
+		/ '>=' <CompOp>
+		/ '<'  <CompOp>
+		/ '>'  <CompOp>
+		/ '==' <CompOp>
+		/ '='  <CompOp>
+		/ '!=' <CompOp>
+		/ 'in' <CompOp>
+		/ '->' <CompOp>
+	end
+
+	rule boolean
+		'true' <Boolean>
+	  / 'false' <Boolean>
+	  / 'console' <Boolean>
+	end
+
+	rule string
+		'"' string_content '"' (attributes)? <String>
+	end
+
+	rule string_content
+		([^"\\] / "\\" . )* <StringContent>
+	end
+
+	rule sn
+  		s '//' (![\n\r] .)* [\n\r] / s / s [\n\r] / [\n\r]
+	end
+
+	rule s
+		[\s\t]*
+	end
+
+	rule S
+		[\s\t]+
+	end
+
+end

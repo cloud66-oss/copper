@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.37.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Copper DSL </title>
+
+  
+  <meta name="description" content="Using Copper DSL for configuration validations"> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="Cloud 66">
+
+
+  <meta property="og:title" content="Copper DSL" />
+<meta property="og:description" content="Using Copper DSL for configuration validations" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://copper.sh/docs/copper-dsl/" />
+
+
+
+<meta property="article:published_time" content="2018-03-19T10:59:22&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-03-19T10:59:22&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="http://copper.sh/docs/copper-dsl/">  
+
+  <link rel="shortcut icon" type="image/png" href="data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAMMOAADDDgAAAAAAAAAAAAD///////////////////////////////////////////////////////////////////7/+/Hp//LOsP/op3D/6Khy//PQsf/88ur/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/Ho//HJp//no2n/45JN/+KPSP/ij0j/45JN/+ekav/xy6r/+/Lq/////////////////////////////////////////////////////////////////////////////////////////////////////////////ffy//LOsP/moWb/4o9J/+KPSP/ikEr/4pBK/+KQSv/ikEr/4o9I/+KQSf/no2j/89Gz//348/////////////////////////////////////////////////////////////////////////////////////////7+//jk0v/qrXn/4pFL/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSP/jkUz/6q99//jm1v////7///////////////////////////////////////////////////////////////////////76+P/yzq7/5ZpZ/+KOR//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ijkj/5Ztc//PRs//++/n////////////////////////////////////////////////////////////99/H/7r6V/+OSTf/ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0n/45NP/+/Bmv/9+PT//////////////////////////////////////////////////PXw/+y3iv/ikEr/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+KQSf/ikEn/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/4pBK/+27j//99/L///////////////////////////////////////359f/tuo7/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ijkj/4o9I/+KSTf/klVP/5JdV/+SWU//ikk3/4o9I/+KOSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+6+lf/++vf//////////////////////////////fz/8Mej/+KRS//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/45RR/+mseP/xyab/9tzG//jm1v/56dv/+ObW//bcxv/xyKX/6ax3/+OVUv/ikEr/4pBK/+KQSv/ikEn/45FN//LLq////v7///////////////////////bdyP/kllT/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+mpc//23cj//vr2///////////////////////////////////////++vf/9NW6/+OVUf/ikEn/4pBK/+KQSv/ij0n/5JhX//fhz//////////////////99vD/6alz/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSf/stYb//PPr///////////////////////////////////////////////////////66t3/5JhX/+KPSf/ikEr/4pBK/+KQSv/ij0f/6q16//348/////////////PStf/ikUv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6at1//zz6////////////////////v3/+enc//LMq//uvZT/7r6V//HLqv/349H//vv4//rq3f/kmFf/4pBJ/+KQSv/ikEr/4pBK/+KQSv/jkk3/9Ne9///////99/L/6ap1/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SWU//338v//////////////////v37//LOsP/lmlv/4o9I/+KOR//ijkf/4o9I/+OVUv/qsH3/8cuq/+SXVv/ikEn/4pBK/+KQSv/ikEr/4pBK/+KOR//qr33//vn2//beyf/kllP/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ijkf/6q98//76+P/////////////////12sP/45VS/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBJ/+KPSP/jkk7/4pFL/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SYV//45NL/78CY/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSP/xy6r//////////////////vr3/+que//ijkf/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK//DHpP/oqXL/4o9I/+KQSv/ikEr/4pBK/+KQSv/ikEr/45JN//bdx//////////////////67eL/5Zpa/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6q98/+WaW//ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/jlVL/+OXU//////////////////jj0v/jlFH/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSf/moGP/45NP/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+OVU//45tb/////////////////9+LQ/+OUUP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SYV//ikEv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//fgzP/////////////////56dz/5JhW/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45VT/+OTTv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/89G1//////////////////338f/opm3/4o9I/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSf/kl1b/5JlZ/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KOR//suIv///39//////////////////HLq//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+aeYf/opWz/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+WbXf/6697//////////////////ffy/+y4i//ikUv/4o5H/+KPSP/ij0j/4o5H/+KPSP/lnF3/7LWH/+OVU//ikEn/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6ax3/+25jP/ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+26j//++/n//////////////////fjz//PRtP/qsH7/56Rr/+eka//qr33/8cil//rs4P/56dv/5JhX/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSf/uv5j/89K1/+OSTf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//HKqf/+/Pr///////////////////////78+v/99/L//ffy//78+v////////////rq3f/kmFf/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//XYwP/6697/5Zxd/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/45NP/+7AmP/88un/////////////////////////////////////////////////+OPS/+SWVP/ikEn/4pBK/+KQSv/ikEr/4pBK/+KPSP/moGP/++/l//78+f/rs4P/4o5H/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/4o9J/+eiaP/wx6P/+OTS//zy6v/9+PT//vr2//349P/88ur/+OPR//DGov/no2j/4pBL/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o5H/+25jP///fz///////TUuv/ikUv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+KPSP/jlVL/5p9i/+imbv/pqXP/6Kdv/+aeYf/jlVL/4o9I/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/jkk7/9drD/////////////PPr/+eiZ//ij0j/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/4o9I/+KOSP/ij0j/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+imbv/99vD/////////////////8cek/+KPSf/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSf/ij0n/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSf/ij0n/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/8s2u///////////////////////77uT/5p9i/+KPR//ijkf/4o9J/+OUUP/kmVn/5Z1f/+WcXf/kl1b/45JN/+KPSP/ij0j/4pBK/+KQSv/ij0j/4o9I/+OSTv/kmFf/5Zxe/+WdX//kmlr/45RQ/+KPSf/ijkf/4o5H/+ejaf/88ur////////////////////////////xyaj/5JlZ/+uygv/yzrD/9+LQ//rt4f/78ef/+/Dm//nq3P/228X/8MSe/+inb//jk1D/45RR/+ipc//wxqL/9t3I//rr3v/78Of/+/Ho//rt4f/34s//8s6u/+uxgP/lmVr/8s+x//////////////////////////////////z17v/559f//vv5/////////////////////////////////////////////fXv//TWu//12L///ffx/////////////////////////////////////////////vv4//nn1//99/H/////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/prettyprint.css" rel="stylesheet" type="text/css">
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube" onload="PR.prettyPrint()">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/">Copper</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home">
+        <img src="/images/logo.svg" width="50px"/>
+      </a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/docs/" >Docs</a></li>
+    
+    <li><a href="/faq/" >Faq</a></li>
+    
+      </ul>
+    </nav>
+    <nav id="top-nav-extra">
+      <ul>
+        
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+  <div id="main">
+    <div id="hero">
+      <h1> Copper DSL </h1>
+      <p class="hero-lead">
+           Using Copper DSL for configuration validations.
+      </p>
+
+    </div> 
+    <div id="kube-component" class="content">
+    
+<nav id="contents">
+    <ol class="js-toc">
+    </ol>
+</nav>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '.content',
+
+headingSelector: 'h3'
+})
+}
+);
+</script>
+
+
+
+    
+
+<h2 id="basics">Basics</h2>
+
+<p>Copper DSL is a simple language that&rsquo;s focused on fetching values from configuration files and checking their validity. It has built-in functionality to deal with IP Addresses, Semantic versioning of components and basic string manipulation.</p>
+
+<h3 id="copper-files">Copper files</h3>
+
+<p>Copper files contain the Copper DSL script. They have text files and have a <code>.cop</code> extension. You can use any text editor to edit them.</p>
+
+<div class="message focus" data-component="message">
+<h5>Copper Syntax Highlighting</h5>
+<p>There is an <a href="https://marketplace.visualstudio.com/items?itemName=cloud66.copper">extension for VisualStudio Code</a> that provides syntax highlighting for Copper files. This extension is under active development and doesn't support Copper DSL's full syntax.</p>
+</div>
+
+<h3 id="rules">Rules</h3>
+
+<p>A rule is like a test you would like to run against your configuration file. Just like code unit tests, it&rsquo;s better to keep the rules focused on one specific area of the configuration file and give then relevant names. A Copper file can contain as many rules as you like.</p>
+
+<h4 id="name">Name</h4>
+
+<p>A rule must have a name. Names should begin with a letter and can container any alphanumerical characters.</p>
+
+<h4 id="action">Action</h4>
+
+<p>A rule must have an Action. Action is what should happen if the rule fails: An <code>ensure</code> action means failure of the rule will fail the validation. A <code>warn</code> action means a warning is shown next to the failed rule but the validations will pass.</p>
+
+<h4 id="condition">Condition</h4>
+
+<p>A condition is a boolean logic that should be true for the rule to pass.</p>
+
+<h4 id="syntax">Syntax</h4>
+
+<pre class="prettyprint">
+rule NAME (warn | ensure) {
+    CONDITION
+}
+</pre>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+rule foo ensure {
+    1 = 1
+}
+</pre></p>
+
+<p class="small">
+Defines a rule called <code>foo</code> which ensures the statement <code>1 = 1</code> returns <code>true</code>
+</p>
+
+<h3 id="variables">Variables</h3>
+
+<p>You can define variables in Copper files as a way to avoid repeating the same things over and over again. For example, you can keep your the valid range of ports in a variable and use that variable in different rules. In Copper DSL, variables are more like constants in other languages and cannot be changed once set.</p>
+
+<h4 id="syntax-1">Syntax</h4>
+
+<pre class="prettyprint">
+var VARIABLE = VALUE
+</pre>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var foo = 1
+var bar = &ldquo;hello&rdquo;
+var valid_ports = (8000..9000)
+</pre></p>
+
+<p><strong>Using variables in a rule</strong>
+<pre class="prettyprint">
+rule bar warn {
+    8050 in valid_ports == true
+}
+</pre></p>
+
+<h3 id="comments">Comments</h3>
+
+<p>Copper files can be commented. Copper supports the Java comment syntax:</p>
+
+<pre class="prettyprint">
+rule foo warn { // this is a single inline comment
+    1 = 1 /* this is a single line block comment */
+}
+
+/* we are going to comment this part off
+rule bar ensure {
+    false = true
+}*/
+</pre>
+
+<h3 id="comparisions">Comparisions</h3>
+
+<p>The condition inside of a rule is usually made up of a value compared against another value. The result of this comparison is either true or false.</p>
+
+<p>The comparision operation can be one of the following:</p>
+
+<table class="striped">
+    <tr><th>Operation</th><th>Meaning</th></tr>
+    <tr><td><code>=</code> or <code>==</code></td><td>Left side is equal the right side</td></tr>
+    <tr><td><code>></code></td><td>Left side is greater than the right side</td></tr>
+    <tr><td><code><</code></td><td>Left side is less than the right side</td></tr>
+    <tr><td><code>>=</code></td><td>Left side is greater than or equal the right side</td></tr>
+    <tr><td><code><=</code></td><td>Left side is less than or equal the right side</td></tr>
+    <tr><td><code>!=</code></td><td>Left side is not equal the right side</td></tr>
+    <tr><td><code>in</code></td><td>Right side is included in the left side (only for sets and ranges)</td></tr>
+</table>
+
+<h3 id="condition-logic">Condition logic</h3>
+
+<p>Comparisons can be combined with <code>and</code> and <code>or</code> to make up more complex conditions.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+rule ComplexRulesAreUs warn {
+    2 &gt; 1 and 3 == 3 or 2 != 8 and
+    8 in [1,2,3,4]
+}
+</pre></p>
+
+<table class="striped">
+    <tr><th>Boolean Operand</th><th>Meaning</th></tr>
+    <tr><td><code>and</code>, <code>&</code> or <code>&&</code></td><td>Boolean AND</td></tr>
+    <tr><td><code>or</code>, <code>|</code> or <code>||</code></td><td>Boolean OR</td></tr>
+</table>
+
+<h3 id="base-data-types">Base Data types</h3>
+
+<p>Copper DSL supports the following data types:</p>
+
+<h4 id="number">Number</h4>
+
+<p>A number is integer or decimal.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var my_int = 12
+rule foo ensure {
+    my_int &gt; 11.43
+}
+</pre></p>
+
+<h4 id="string">String</h4>
+
+<p>Strings are wrapped in double quotes <code>&quot;</code>.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var a_string = &ldquo;foo&rdquo;
+</pre></p>
+
+<p>Strings have the following attributes:</p>
+
+<h5><span class="code-attribute">count</span></h5>
+
+<p>Returns the length of the string: <code>&quot;foo&quot;.count</code> will return 3.</p>
+
+<h5><span class="code-attribute">gsub</span></h5>
+
+<p>Replaces text in the string using the regular expression pattern given.</p>
+
+<p>For example <code>&quot;abc&quot;.gsub(&quot;b&quot;, &quot;!&quot;)</code> will return <code>&quot;a!c&quot;</code>.</p>
+
+<h5><span class="code-attribute">at</span></h5>
+
+<p>Returns the character at the given index: <code>&quot;abc&quot;.at(2)</code> returns <code>&quot;b&quot;</code>.</p>
+
+<h4 id="array">Array</h4>
+
+<p>Arrays can contain any number of values. Arrays can hold values of different types. An array is wrapped in <code>[</code> and <code>]</code> and each item is separated by a <code>,</code>.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var my_array = [1,2,3,4]
+</pre></p>
+
+<p>Arrays have the following attributes:</p>
+
+<h5><span class="code-attribute">count</span></h5>
+
+<p>Returns the number of items in the array: <code>[1,2,3].count</code> will return 3.</p>
+
+<h5><span class="code-attribute">first</span></h5>
+
+<p>Returns the first item of the array: <code>[&quot;foo&quot;,&quot;bar&quot;,45].first</code> will return <code>&quot;foo&quot;</code>.</p>
+
+<h5><span class="code-attribute">last</span></h5>
+
+<p>Returns the last item of the array: <code>[&quot;foo&quot;,&quot;bar&quot;,45].first</code> will return 45.</p>
+
+<h5><span class="code-attribute">at</span></h5>
+
+<p>Returns the item at the given index: <code>[1, &quot;item 2&quot;, &quot;third item&quot;, 4].at(2)</code> returns <code>&quot;item 2&quot;</code>.</p>
+
+<h5><span class="code-attribute">contains</span></h5>
+
+<p>Returns true if the given item can be found in the array: <code>[1,2,&quot;foo&quot;].contains(2)</code> will return true.</p>
+
+<h5><span class="code-attribute">unique</span></h5>
+
+<p>Removes duplicates from the array and returns a new array: <code>[1,2,3,2,1].unique</code> will return <code>[1,2,3]</code></p>
+
+<h5><span class="code-attribute">extract</span></h5>
+
+<p>Runs each item of a string only array through a regular expression and returns the item with the given index of the regexp:</p>
+
+<p><code>[&quot;name1:tag1&quot;, &quot;name2:tag2&quot;, &quot;name3:tag3&quot;].extract(&quot;.*:(.*)&quot;, 1)</code> will return <code>[&quot;tag1&quot;, &quot;tag2&quot;, &quot;tag3&quot;]</code>. The number <code>1</code> in this case refers to the regexp group.</p>
+
+<p><strong>Another example</strong></p>
+
+<p><code>[&quot;path1/image1:tag1&quot;, &quot;path2/image2:tag2&quot;].extract(&quot;.*\/(.*):.*&quot;, 2)</code> will return <code>[&quot;image1&quot;, &quot;image2&quot;, &quot;image3&quot;]</code>.</p>
+
+<h5 id="equality">Equality</h5>
+
+<p>You can use <code>=</code> or <code>==</code> to compare two arrays. This will return true if both arrays contain the same items but ignores the ordering of the items. For example:</p>
+
+<p><code>[1,2,3] == [2,3,1]</code> while <code>[1,2,3] != [1,2,3,4]</code>.</p>
+
+<h5 id="inclusion">Inclusion</h5>
+
+<p>You can use the <code>in</code> comparision for arrays: <code>1 in [1,2,3]</code> is true and <code>&quot;foo&quot; in [&quot;bar&quot;, &quot;fuzz&quot;]</code> is false.</p>
+
+<h4 id="range">Range</h4>
+
+<p>Range contains all the numbers between two numbers. Ranges are wrapped in <code>(</code> and <code>)</code> with <code>..</code> between the low and the high numbers. Range is inclusive of both ends.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var the_range = (1..10)
+</pre></p>
+
+<h5><span class="code-attribute">contains</span></h5>
+
+<p>Returns true if the given item can be found in the range: <code>(1..10).contains(1)</code> will return true.</p>
+
+<h5 id="inclusion-1">Inclusion</h5>
+
+<p>You can use the <code>in</code> comparision for ranges: <code>10 in (1..10)</code> is true and <code>13 in (23..45)</code> is false.</p>
+
+<h3 id="complex-data-types">Complex data types</h3>
+
+<p>Copper DSL supports a growing set of configuration specific data types. Currently this includes the following:</p>
+
+<h4 id="ipaddress">IPAddress</h4>
+
+<p>An IPaddress can hold an IP address and/or subnet. You can use IPAddress to check various things about an IPAddress, like it&rsquo;s range, inclusion of other IP addresses, its class and more.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var internal = ipaddress(&ldquo;62.0.0.0/24&rdquo;)
+var front_end = ipaddress(&ldquo;62.0.2.45&rdquo;)
+</pre></p>
+
+<p>IPAddress has the following attributes:</p>
+
+<h5><span class="code-attribute">first</span></h5>
+
+<p>Returns the first IP address in a range: <code>ipaddress(&quot;10.0.0.0/24&quot;).first</code> will return <code>ipaddress(&quot;10.0.0.1&quot;)</code></p>
+
+<h5><span class="code-attribute">last</span></h5>
+
+<p>Returns the last IP address in a range: <code>ipaddress(&quot;10.0.0.0/24&quot;).last</code> will return <code>ipaddress(&quot;10.0.0.254&quot;)</code></p>
+
+<h5><span class="code-attribute">full_address</span></h5>
+
+<p>Returns the IP address and the prefix: <code>ipaddress(&quot;10.0.0.1&quot;).full_address</code> will return <code>&quot;10.0.0.1/32&quot;</code></p>
+
+<h5><span class="code-attribute">address</span></h5>
+
+<p>Returns the IP address without the prefix: <code>ipaddress(&quot;172.16.10.1/24&quot;).address</code> will return <code>&quot;172.16.10.1&quot;</code></p>
+
+<h5><span class="code-attribute">netmask</span></h5>
+
+<p>Returns the IP netmask: <code>ipaddress(&quot;10.0.0.0/8&quot;).netmask</code> will return <code>&quot;255.0.0.0&quot;</code></p>
+
+<h5><span class="code-attribute">octets</span></h5>
+
+<p>Returns an array of IP address octets: <code>ipaddress(&quot;172.16.10.1&quot;).octets</code> will return <code>[172, 16, 10, 1]</code></p>
+
+<h5><span class="code-attribute">prefix</span></h5>
+
+<p>Returns the IP address prefix without the address: <code>ipaddress(&quot;172.16.10.1/24&quot;).prefix</code> will return <code>8</code></p>
+
+<h5><span class="code-attribute">is_network</span></h5>
+
+<p>Returns true if the given IP address is a network address. <code>ipaddress(&quot;10.0.0.0/24&quot;).is_network</code> will return true while <code>ipaddress(&quot;10.0.0.1/32&quot;).is_network</code> returns false.</p>
+
+<h5><span class="code-attribute">is_loopback</span></h5>
+
+<p>Returns true if the given IP address is a local loopback address. <code>ipaddress(&quot;127.0.0.1&quot;).is_loopback</code> will return true.</p>
+
+<h5><span class="code-attribute">is_multicast</span></h5>
+
+<p>Returns true if the given IP address is a multicase address. <code>ipaddress(&quot;224.0.0.1/32&quot;).is_multicast</code> will return true.</p>
+
+<h5><span class="code-attribute">is_class_a</span></h5>
+
+<p>Returns true if the given IP address is a class A IP address. <code>ipaddress(&quot;10.0.0.1/24&quot;).is_class_a</code> will return true.</p>
+
+<h5 id="inclusion-2">Inclusion</h5>
+
+<p>Inclusion of an IP address in a network IP range can be checked using the <code>in</code> comparision. For example <code>ipaddress(&quot;10.1.1.32&quot;) in ipaddress(&quot;10.1.1.0/24&quot;)</code> returns true.</p>
+
+<h5><span class="code-attribute">is_class_b</span></h5>
+
+<p>Returns true if the given IP address is a class A IP address. <code>ipaddress(&quot;172.16.10.1/24&quot;).is_class_b</code> will return true.</p>
+
+<h5><span class="code-attribute">is_class_c</span></h5>
+
+<p>Returns true if the given IP address is a class A IP address. <code>ipaddress(&quot;192.168.1.1/30&quot;).is_class_c</code> will return true.</p>
+
+<h4 id="semver">Semver</h4>
+
+<p>Semver holds and parses a string as a <a href="https://semver.org/">Semantic version</a>. This allows support of semantic versioning and checks.</p>
+
+<p><strong>Example</strong>
+<pre class="prettyprint">
+var mysql_version = semver(&ldquo;6.5.0&rdquo;)
+var web_server = semver(&ldquo;1.2.4-pre&rdquo;)
+</pre></p>
+
+<h5><span class="code-attribute">major</span></h5>
+
+<p>Returns the major part of the version number: <code>semver(&quot;6.5.7&quot;).major</code> returns <code>&quot;6&quot;</code>.</p>
+
+<h5><span class="code-attribute">minor</span></h5>
+
+<p>Returns the minor part of the version number: <code>semver(&quot;6.5.7&quot;).major</code> returns <code>&quot;5&quot;</code>.</p>
+
+<h5><span class="code-attribute">patch</span></h5>
+
+<p>Returns the patch part of the version number: <code>semver(&quot;6.5.7&quot;).major</code> returns <code>&quot;7&quot;</code>.</p>
+
+<h5><span class="code-attribute">build</span></h5>
+
+<p>Returns the build part of the version number if available: <code>semver(&quot;3.7.9-pre.1+revision.15723&quot;).major</code> returns <code>&quot;revision.15623&quot;</code>.</p>
+
+<h5><span class="code-attribute">pre</span></h5>
+
+<p>Returns the pre part of the version number if available: <code>semver(&quot;3.7.9-pre.1+revision.15723&quot;).major</code> returns <code>&quot;pre.1&quot;</code>.</p>
+
+<h5><span class="code-attribute">satisfies</span></h5>
+
+<p>Checks if a semver satisfies a Pessimistic version comparison: <code>semver(&quot;1.6.5&quot;).satisfies(&quot;~&gt; 1.5&quot;)</code> returns true.</p>
+
+<h5 id="comparison">Comparison</h5>
+
+<p>You can use <code>&lt;</code>, <code>&gt;</code>, <code>=</code>, <code>==</code>, <code>&lt;=</code>, <code>&gt;=</code> and <code>!=</code> comparisions betwene two semvers.</p>
+
+<h3 id="type-conversion-and-parsing">Type conversion and parsing</h3>
+
+<p>In most cases, values read from a configuration file are strings. In order for them to be usable with Copper DSL&rsquo;s complex data types, you can read them as different types using the <code>as</code> function.</p>
+
+<p><strong>Example</strong>
+<p class="small">
+Here, we are assuming the value of the <code>mysql_version</code> variable is a string <code>&quot;5.6.7&quot;</code>:
+</p></p>
+
+<pre class="prettyprint">
+mysql_version.as(semver).satisfies("~> 5.6")
+</pre>
+
+<h3 id="reading-from-configuration-files">Reading from configuration files</h3>
+
+<p>Copper DSL uses <a href="http://goessner.net/articles/JsonPath/">JSONPath</a> format to read values from a configuration file. For any configuration file format, the content is first read and converted in to JSON which makes it possible to use JSONPath to find nodes and attributes in the configuration file.</p>
+
+<p>The <code>fetch</code> function accepts the JSONPath and returns an array of all matching nodes and attributes in the configuration.</p>
+
+<p class="small">This is a YAML configuration file used in the following examples</p>
+
+<pre class="prettyprint">
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: foobar
+  name: foo-svc
+  annotations:
+    cloud66.com/snapshot-uid: 123-456-789
+    cloud66.com/snapshot-gitref: abcd
+  labels:
+    app: foo
+    tier: bar
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8090
+  - port: 8100
+    targetPort: 8100
+  - port: 5000
+  selector:
+    app: foo
+    tier: bar
+</pre>
+
+<p>To fetch the value of <code>type</code> under <code>spec</code> (which is <code>NodePort</code> in the file above), we can use the following JSONPath format:</p>
+
+<pre class="prettyprint">
+fetch("$.spec.type") // will return ["NodePort"]
+</pre>
+
+<p>To return all the <code>targetPort</code> values under <code>spec.port</code> you can use attribute selectors:</p>
+
+<pre class="prettyprint">
+fetch("$.spec.ports..targetPort") // will return [8090, 8100]
+</pre>
+
+<p>To return the value of <code>targetPort</code> for the <code>8080</code> port (<code>8090</code> in the example above) you can use the filters:</p>
+
+<pre class="prettyprint">
+fetch("$.spect.ports[?(@.port == 8080)]") // will return [8090]
+</pre>
+
+<h4 id="jsonpath-syntax">JSONPath syntax</h4>
+
+<p>You can use the <a href="http://goessner.net/articles/JsonPath/">JSONPath reference</a> as a syntax guideline. Copper DSL implements a subset of JSONPath, listed below. You can also use the <a href="http://jsonpath.com/">Online JSONPath</a> evaluator for testing or refer to the debugging section below:</p>
+
+<table class="striped">
+    <tr><th>Operation</th><th>Meaning</th></tr>
+    <tr><td><code>$</code></td><td>The root element to query. This starts all path expressions.</td></tr>
+    <tr><td><code>@</code></td><td>The current node being processed by a filter predicate.</td></tr>
+    <tr><td><code>*</code></td><td>Wildcard. Available anywhere a name or numeric are required.</td></tr>
+    <tr><td><code>..</code></td><td>Deep scan. Available anywhere a name is required.</td></tr>
+    <tr><td><code>.&lt;name&gt;</code></td><td>Dot-notated child</td></tr>
+    <tr><td><code>['&lt;name&gt;' (, '&lt;name&gt;')]<name></code></td><td>Bracket-notated child or children</td></tr>
+    <tr><td><code>[&lt;number&gt; (, &lt;number&gt;)]<name></code></td><td>Array index or indexes</td></tr>
+    <tr><td><code>[start:end]<name></code></td><td>Array slice operator</td></tr>
+    <tr><td><code>[?(&lt;expression&gt;)]&lt;name&gt;</code></td><td>Filter expression. Expression must evaluate to a boolean value.</td></tr>
+</table>
+
+<table class="striped">
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>left is equal to right (note that 1 is not equal to '1')</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>left is not equal to right</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>left is less than right</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>left is less or equal to right</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>left is greater than right</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>left is greater than or equal to right</td>
+</tr>
+</table>
+
+<p><strong>Another example</strong></p>
+
+<pre class="prettyprint">
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: foobar
+  name: foo
+spec:
+  template:
+    metadata:
+      labels:
+        app: foo
+        tier: bar
+    spec:
+      containers:
+        - name: foo
+          image: index.docker.io/library/ubuntu:latest
+          ports:
+            - containerPort: 8080
+        - name: mysql
+          image: quay.io/mysql:2.3.0
+          ports:
+            - containerPort: 3306
+        - name: buzz
+          image: quay.io/pg:latest
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+      - name: registry-pull-secret
+</pre>
+
+<div>
+    <p class="small">Get the image tag of all containers</p>
+    <pre class="prettyprint">
+fetch("$.spec.spec.containers..image").extract(".*:(.*)", 1) // returns ["latest", "2.3.0", "latest"]
+</pre>
+    <p class="small">Get the image name of the container named <code>mysql</code></p>
+    <pre class="prettyprint">
+fetch("$.spec.spec.containers[?(@.name == 'mysql')]") // will return ["index.docker.io/library/ubuntu:latest"]
+</pre>
+</div>
+
+<h3 id="debugging">Debugging</h3>
+
+<p>You can dump the results of variables and comparisons to the console using the <code>-&gt; console</code> directive.</p>
+
+<div class="message warning" data-component="message">
+    <h5>Note</h5>
+    For <code>console</code> to work, you need to run Copper CLI with the <code>--debug</code> option.
+</div>
+
+<pre class="prettyprint">
+$ copper check --rules rule.cop --file config.yml --debug
+</pre>
+
+<p><strong>Example</strong>
+<p class="small">
+Write the value of variable <code>mysql_version</code> to the console
+</p></p>
+
+<pre class="prettyprint">
+rule foo warn {
+    mysql_variable -> console
+}
+</pre>
+
+<p class="small">
+Write the result of a comparison to the console
+</p>
+
+<pre class="prettyprint">
+rule foo warn {
+    fetch("$.spec.template.images").contain("ubuntu") -> console
+}
+</pre>
+
+<p class="small">
+Write the result of a <code>fetch</code> to console
+</p>
+
+<pre class="prettyprint">
+rule foo warn {
+    fetch("$.spec.ports..targetPort") -> console
+}
+</pre>
+
+
+    
+    </div>
+    </div>
+</main>
+  <footer></footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+  <script src="/libraries/prettify/prettify.js"></script>
+</body>
+
+</html>

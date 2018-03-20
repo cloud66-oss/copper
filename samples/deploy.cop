@@ -1,0 +1,13 @@
+rule NoLatest ensure {  // use of latest as image tag is not allowed
+    fetch("$.spec.template.spec.containers..image")
+        .extract(".*:(.*)", 1)
+        .contains("latest") == false
+}
+
+rule RegistrySecretIsAvailable ensure { // imagePullSecrets should be provided
+    fetch("$.spec.template.spec.imagePullSecrets").count != 0
+}
+
+rule PortsAreCorrect warn { // warn if the ports are changed
+    fetch("$.spec.template.spec.containers[?(@.name == 'mysql')].ports..containerPort").first == 3306
+}

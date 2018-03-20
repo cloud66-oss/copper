@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.37.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Collapse </title>
+
+  
+  <meta name="description" content="Smoothly and reliably collapse elements for extra convenience"> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="Cloud 66">
+
+
+  <meta property="og:title" content="Collapse" />
+<meta property="og:description" content="Smoothly and reliably collapse elements for extra convenience" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://copper.sh/blog/collapse/" />
+
+
+
+<meta property="article:published_time" content="2017-04-10T16:42:50&#43;01:00"/>
+
+<meta property="article:modified_time" content="2017-04-10T16:42:50&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="http://copper.sh/blog/collapse/">  
+
+  <link rel="shortcut icon" type="image/png" href="data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAMMOAADDDgAAAAAAAAAAAAD///////////////////////////////////////////////////////////////////7/+/Hp//LOsP/op3D/6Khy//PQsf/88ur/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/Ho//HJp//no2n/45JN/+KPSP/ij0j/45JN/+ekav/xy6r/+/Lq/////////////////////////////////////////////////////////////////////////////////////////////////////////////ffy//LOsP/moWb/4o9J/+KPSP/ikEr/4pBK/+KQSv/ikEr/4o9I/+KQSf/no2j/89Gz//348/////////////////////////////////////////////////////////////////////////////////////////7+//jk0v/qrXn/4pFL/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSP/jkUz/6q99//jm1v////7///////////////////////////////////////////////////////////////////////76+P/yzq7/5ZpZ/+KOR//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ijkj/5Ztc//PRs//++/n////////////////////////////////////////////////////////////99/H/7r6V/+OSTf/ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0n/45NP/+/Bmv/9+PT//////////////////////////////////////////////////PXw/+y3iv/ikEr/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+KQSf/ikEn/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/4pBK/+27j//99/L///////////////////////////////////////359f/tuo7/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ijkj/4o9I/+KSTf/klVP/5JdV/+SWU//ikk3/4o9I/+KOSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+6+lf/++vf//////////////////////////////fz/8Mej/+KRS//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/45RR/+mseP/xyab/9tzG//jm1v/56dv/+ObW//bcxv/xyKX/6ax3/+OVUv/ikEr/4pBK/+KQSv/ikEn/45FN//LLq////v7///////////////////////bdyP/kllT/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+mpc//23cj//vr2///////////////////////////////////////++vf/9NW6/+OVUf/ikEn/4pBK/+KQSv/ij0n/5JhX//fhz//////////////////99vD/6alz/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSf/stYb//PPr///////////////////////////////////////////////////////66t3/5JhX/+KPSf/ikEr/4pBK/+KQSv/ij0f/6q16//348/////////////PStf/ikUv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6at1//zz6////////////////////v3/+enc//LMq//uvZT/7r6V//HLqv/349H//vv4//rq3f/kmFf/4pBJ/+KQSv/ikEr/4pBK/+KQSv/jkk3/9Ne9///////99/L/6ap1/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SWU//338v//////////////////v37//LOsP/lmlv/4o9I/+KOR//ijkf/4o9I/+OVUv/qsH3/8cuq/+SXVv/ikEn/4pBK/+KQSv/ikEr/4pBK/+KOR//qr33//vn2//beyf/kllP/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ijkf/6q98//76+P/////////////////12sP/45VS/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBJ/+KPSP/jkk7/4pFL/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SYV//45NL/78CY/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSP/xy6r//////////////////vr3/+que//ijkf/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK//DHpP/oqXL/4o9I/+KQSv/ikEr/4pBK/+KQSv/ikEr/45JN//bdx//////////////////67eL/5Zpa/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6q98/+WaW//ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/jlVL/+OXU//////////////////jj0v/jlFH/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSf/moGP/45NP/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+OVU//45tb/////////////////9+LQ/+OUUP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SYV//ikEv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//fgzP/////////////////56dz/5JhW/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45VT/+OTTv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/89G1//////////////////338f/opm3/4o9I/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSf/kl1b/5JlZ/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KOR//suIv///39//////////////////HLq//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+aeYf/opWz/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+WbXf/6697//////////////////ffy/+y4i//ikUv/4o5H/+KPSP/ij0j/4o5H/+KPSP/lnF3/7LWH/+OVU//ikEn/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6ax3/+25jP/ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+26j//++/n//////////////////fjz//PRtP/qsH7/56Rr/+eka//qr33/8cil//rs4P/56dv/5JhX/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSf/uv5j/89K1/+OSTf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//HKqf/+/Pr///////////////////////78+v/99/L//ffy//78+v////////////rq3f/kmFf/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//XYwP/6697/5Zxd/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/45NP/+7AmP/88un/////////////////////////////////////////////////+OPS/+SWVP/ikEn/4pBK/+KQSv/ikEr/4pBK/+KPSP/moGP/++/l//78+f/rs4P/4o5H/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/4o9J/+eiaP/wx6P/+OTS//zy6v/9+PT//vr2//349P/88ur/+OPR//DGov/no2j/4pBL/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o5H/+25jP///fz///////TUuv/ikUv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+KPSP/jlVL/5p9i/+imbv/pqXP/6Kdv/+aeYf/jlVL/4o9I/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/jkk7/9drD/////////////PPr/+eiZ//ij0j/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/4o9I/+KOSP/ij0j/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+imbv/99vD/////////////////8cek/+KPSf/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSf/ij0n/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSf/ij0n/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/8s2u///////////////////////77uT/5p9i/+KPR//ijkf/4o9J/+OUUP/kmVn/5Z1f/+WcXf/kl1b/45JN/+KPSP/ij0j/4pBK/+KQSv/ij0j/4o9I/+OSTv/kmFf/5Zxe/+WdX//kmlr/45RQ/+KPSf/ijkf/4o5H/+ejaf/88ur////////////////////////////xyaj/5JlZ/+uygv/yzrD/9+LQ//rt4f/78ef/+/Dm//nq3P/228X/8MSe/+inb//jk1D/45RR/+ipc//wxqL/9t3I//rr3v/78Of/+/Ho//rt4f/34s//8s6u/+uxgP/lmVr/8s+x//////////////////////////////////z17v/559f//vv5/////////////////////////////////////////////fXv//TWu//12L///ffx/////////////////////////////////////////////vv4//nn1//99/H/////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/prettyprint.css" rel="stylesheet" type="text/css">
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube" onload="PR.prettyPrint()">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/">Copper</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home">
+        <img src="/images/logo.svg" width="50px"/>
+      </a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/docs/" >Docs</a></li>
+    
+    <li><a href="/faq/" >Faq</a></li>
+    
+      </ul>
+    </nav>
+    <nav id="top-nav-extra">
+      <ul>
+        
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+<div class="push-center" itemscope itemtype="http://schema.org/BlogPosting">
+    
+<meta itemprop="name" content="Collapse">
+<meta itemprop="description" content="Smoothly and reliably collapse elements for extra convenience">
+
+
+<meta itemprop="datePublished" content="2017-04-10T16:42:50&#43;01:00" />
+<meta itemprop="dateModified" content="2017-04-10T16:42:50&#43;01:00" />
+<meta itemprop="wordCount" content="833">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<div id="hero">
+    <h1 itemprop="headline">  Collapse</h1>
+    
+<blockquote itemprop="description">Smoothly and reliably collapse elements for extra convenience</blockquote>
+
+<time class="post-time"><span class="icon">
+  <i class="fa fa-clock-o" aria-hidden="true"></i>
+</span>
+<span>4 minute read</span>
+<span class="icon">
+ <i class="fa fa-pencil" aria-hidden="true"></i>
+</span>
+
+  Published: <time datetime="2017-04-10T16:42:50&#43;01:00">10 Apr, 2017</time>
+
+</time>
+</div>
+<div id="post-box">
+<div id="post" itemprop="articleBody">
+    
+    <p><h3 class="section-head" id="h-base"><a href="#h-base">Base</a></h3>
+<div class="example">
+  <div class="my-collapse" data-component="collapse" id="my-collapse">
+    <h4><a class="collapse-toggle" href="#collapse-box-1">Item 1</a></h4>
+    <div class="collapse-box hide" id="collapse-box-1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <h4><a class="collapse-toggle" href="#collapse-box-2">Item 2</a></h4>
+    <div class="collapse-box" id="collapse-box-2">
+      <p>I look active on load.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <h4><a class="collapse-toggle" href="#collapse-box-3">Item 3</a></h4>
+    <div class="collapse-box hide" id="collapse-box-3">
+      <h6>Important Heading</h6>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div></p>
+
+<pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-collapse"</span> <span class="hljs-attr">data-component</span>=<span class="hljs-string">"collapse"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#box-1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box hide"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"box-1"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#box-2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"box-2"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#box-3"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box hide"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"box-3"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+</div>
+<h3 class="section-head" id="h-navigation-example"><a href="#h-navigation-example">Navigation Example</a></h3>
+<p>Here you can see a list of items forming a navigation menu, with a nested list which acts as a collapsable element</p>
+<div class="example">
+  <ul id="demo-nav-collapse">
+    <li>
+      <a href="#">Installation</a>
+    </li>
+    <li>
+      <a href="#">Configuration</a>
+    </li>
+    <li>
+      <a href="#">Adding Content</a>
+    </li>
+    <li>
+      <a href="#">Templates</a>
+    </li>
+    <li data-component="collapse">
+      <a class="collapse-toggle" href="#languages-box-2">Languages <span class="caret down"></span></a>
+      <ul class="collapse-box" id="languages-box-2">
+        <li>
+          <a href="#">Setup</a>
+        </li>
+        <li>
+          <a href="#">Translating content</a>
+        </li>
+        <li>
+          <a href="#">Language variables</a>
+        </li>
+        <li>
+          <a href="#">Supporting RTL</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Settings</a>
+    </li>
+    <li>
+      <a href="#">Callbacks</a>
+    </li>
+    <li>
+      <a href="#">API</a>
+    </li>
+  </ul>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-component</span>=<span class="hljs-string">"collapse"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#toggle-box"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>
+            Toggle
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"caret down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle-box"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</pre>
+</div>
+<h3 class="section-head" id="h-settings"><a href="#h-settings">Settings</a></h3>
+<p>Settings are pretty straightforward: you can toggle, denote active element, turn animation on and off, and more.</p>
+<h5>toggle</h5>
+<ul>
+  <li>Type: <var>boolean</var></li>
+  <li>Default: <var>true</var></li>
+</ul>
+<h5>active</h5>
+<ul>
+  <li>Type: <var>string or boolean</var></li>
+  <li>Default: <var>false</var></li>
+</ul>
+<h5>toggleClass</h5>
+<ul>
+  <li>Type: <var>string</var></li>
+  <li>Default: <var>'collapse-toggle'</var></li>
+</ul>
+<p>Sets a class of a collapsable object.</p>
+<h5>boxClass</h5>
+<ul>
+  <li>Type: <var>string</var></li>
+  <li>Default: <var>'collapse-box'</var></li>
+</ul>
+<p>Sets a class for collapsable object's content</p>
+<h5>animation</h5>
+<ul>
+  <li>Type: <var>boolean</var></li>
+  <li>Default: <var>true</var></li>
+</ul>
+<p>Turns animation on and off.</p>
+<h3 class="section-head" id="h-callbacks"><a href="#h-callbacks">Callbacks</a></h3>
+<h5>open</h5>
+<pre class="code skip">$(<span class="hljs-string">'#my-collapse'</span>).on(<span class="hljs-string">'open.collapse'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-comment">// do something...</span>
+});
+</pre>
+<h5>opened</h5>
+<pre class="code skip">$(<span class="hljs-string">'#my-collapse'</span>).on(<span class="hljs-string">'opened.collapse'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-comment">// do something...</span>
+});
+</pre>
+<h5>close</h5>
+<pre class="code skip">$(<span class="hljs-string">'#my-collapse'</span>).on(<span class="hljs-string">'close.collapse'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-comment">// do something...</span>
+});
+</pre>
+<h5>closed</h5>
+<pre class="code skip">$(<span class="hljs-string">'#my-collapse'</span>).on(<span class="hljs-string">'closed.collapse'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-comment">// do something...</span>
+});
+</pre>
+<h3 class="section-head" id="h-api"><a href="#h-api">API</a></h3>
+<p>We love APIs, and for interactive elements such as collapsable elements we offer ways to programmatically open and close individual elements, or all at once.</p>
+<div class="example">
+  <p><button class="button outline" onclick="$('#my-collapse-api').collapse('open', '#box-2');">Open</button> <button class="button outline" onclick="$('#my-collapse-api').collapse('close', '#box-2');">Close</button> <button class="button outline" onclick="$('#my-collapse-api').collapse('openAll');">Open All</button> <button class="button outline" onclick="$('#my-collapse-api').collapse('closeAll');">Close All</button></p><br>
+  <div class="my-collapse" data-component="collapse" id="my-collapse-api">
+    <h4><a class="collapse-toggle" href="#box-1">Item 1</a></h4>
+    <div class="collapse-box hide" id="box-1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <h4><a class="collapse-toggle" href="#box-2">Item 2</a></h4>
+    <div class="collapse-box hide" id="box-2">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <h4><a class="collapse-toggle" href="#box-3">Item 3</a></h4>
+    <div class="collapse-box hide" id="box-3">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"$('#my-collapse-api').collapse('open', '#box-2');"</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"$('#my-collapse-api').collapse('close', '#box-2');"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"$('#my-collapse-api').collapse('openAll');"</span>&gt;</span>Open All<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"$('#my-collapse-api').collapse('closeAll');"</span>&gt;</span>Close All<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-collapse-api"</span> <span class="hljs-attr">data-component</span>=<span class="hljs-string">"collapse"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#box-1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box hide"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"box-1"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#box-2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box hide"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"box-2"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#box-3"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-toggle"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"collapse-box hide"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"box-3"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+</div>
+<h5>open</h5>
+<pre class="code skip"><span class="hljs-variable">$(</span><span class="hljs-string">'#my-collapse'</span>).collapse(<span class="hljs-string">'open'</span>);
+</pre>
+<h5>close</h5>
+<pre class="code skip"><span class="hljs-variable">$(</span><span class="hljs-string">'#my-collapse'</span>).collapse(<span class="hljs-string">'close'</span>);
+</pre>
+<h5>openAll</h5>
+<pre class="code skip"><span class="hljs-variable">$(</span><span class="hljs-string">'#my-collapse'</span>).collapse(<span class="hljs-string">'openAll'</span>);
+</pre>
+<h5>closeAll</h5>
+<pre class="code skip"><span class="hljs-variable">$(</span><span class="hljs-string">'#my-collapse'</span>).collapse(<span class="hljs-string">'closeAll'</span>);
+</pre>
+
+
+</div>
+
+<div class="form-subscribe">
+    <div id="form-subscribe-success" style="display: none;"></div>
+<div id="form-subscribe-box">
+        <h4>All about Redactor, Grafs and Kube.</h4>
+        <p>Monthly news &amp; updates. Just straight to the point.</p>
+
+        <form action="" name="mc-embedded-subscribe-form" method="post" class="form"><input type="hidden" name="authorize-token" value="">
+            <div id="subscribe-email-validation-error"></div>
+            <div class="form-item">
+                <div class="append">
+                    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+                    <button class="button">Subscribe</button>
+                </div>
+            </div>
+    
+            
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+        </form>
+
+        <div class="form-subscribe-twitter"><div>or</div> <a href="https://twitter.com/jebli_7">Follow us on Twitter</a></div>
+    </div>
+</div>
+
+    <div class="">
+        <p>
+  Published
+  
+    
+      by <span itemprop="author">Cloud 66</span>
+    
+  
+  <time datetime="2017-04-10T16:42:50&#43;01:00">
+    10 Apr, 2017
+  </time>
+  
+  
+  using <span itemprop="wordCount">833</span> words.
+</p>
+
+        
+
+
+
+    </div>
+    
+    
+    
+</div>
+</div>
+</main>
+  <footer>   <footer id="footer">
+    <nav>
+      <ul>
+        <li><span>Copper</span></li>
+        <li>
+          <a href="/company/">Company</a>
+        </li>
+          <li>
+          <a href="/docs/">Docs</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/cloud66">Follow us on Twitter</a>
+        </li>
+      </ul>
+    </nav>
+    <p>&copy; 2018 &ndash; <a href="https://cloud66.com">Cloud66 Inc</a></p>
+  </footer>
+ </footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+  <script src="/libraries/prettify/prettify.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+pre,
+pre code {
+    border-radius: 4px;
+}
+
+mark, code, samp, kbd {
+    position: relative;
+    top: -1px;
+    padding: 4px 4px 2px 4px;
+    border-radius: 2px;
+    display: inline-block;
+    line-height: 1;
+    color: #000000;
+}
+
+.code-attribute {
+    color: #e78c45;
+    font-family: Consolas,Monaco,"Courier New",monospace;
+    font-size: 16px;
+}

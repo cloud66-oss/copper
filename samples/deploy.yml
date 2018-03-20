@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: foobar
+  name: foo
+spec:
+  template:
+    metadata:
+      labels:
+        app: foo
+        tier: bar
+    spec:
+      containers:
+        - name: foo
+          image: index.docker.io/library/ubuntu:latest
+          ports:
+            - containerPort: 8080
+        - name: mysql
+          image: quay.io/mysql:2.3.0
+          ports:
+            - containerPort: 3306
+        - name: buzz
+          image: quay.io/pg:latest
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+      - name: registry-pull-secret

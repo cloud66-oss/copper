@@ -1,0 +1,74 @@
+var a = "$" // comment
+// some comment
+var b = 1
+var c = ipaddress("62.0.0.0/32")
+
+// and more
+// and more and more
+
+rule e1 ensure { // here now
+	fetch(a).count = b // and there
+} // really?
+
+// let's really comment things out
+
+/* now we are really commenting hard
+oh yeah!
+*/
+
+rule in_array ensure {
+	10 in [1,2,3,4]
+}
+
+rule ip_octets ensure {
+	c.is_class_a -> console
+}
+
+rule in_range ensure {
+	8 in (1..9)
+}
+
+rule variable_attribute warn {
+	a.count -> console
+}
+
+rule class_attribute warn {
+	c.last -> console
+}
+
+rule ip_range ensure {
+ipaddress("63.0.0.2") in c
+}
+
+rule e2 warn { a -> console } /* did I say we can comment? */
+
+rule e3 ensure {
+	fetch(a).count -> console
+}
+
+rule e4 warn {
+	fetch("$.spec.template.spec.containers..image")
+		.extract(".*:(.*)", 1).contains("latest") -> console
+}
+
+rule e5 warn {
+	fetch("$.spec.template.spec.containers[?(@.name=='bar')].image")
+		.extract(".*:(.*)", 1)
+		.as(semver) -> console
+}
+
+rule e6 warn {
+	fetch("$.spec.template.spec.containers[?(@.name=='bar')].image")
+		.extract(".*:(.*)", 1)
+		.first
+		.as(semver)
+		.satisfies("~> 2.3") -> console
+}
+
+rule e7 ensure {
+	"1.2.3".as(semver) < "1.2.4".as(semver)
+}
+
+rule e8 ensure {
+	(1..10).contains(10) -> console
+}

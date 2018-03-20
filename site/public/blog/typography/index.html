@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.37.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Typography with kube </title>
+
+  
+  <meta name="description" content="Always precise spacing and perfect font size"> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="Cloud 66">
+
+
+  <meta property="og:title" content="Typography with kube" />
+<meta property="og:description" content="Always precise spacing and perfect font size" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://copper.sh/blog/typography/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="http://copper.sh/blog/typography/">  
+
+  <link rel="shortcut icon" type="image/png" href="data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAMMOAADDDgAAAAAAAAAAAAD///////////////////////////////////////////////////////////////////7/+/Hp//LOsP/op3D/6Khy//PQsf/88ur/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/Ho//HJp//no2n/45JN/+KPSP/ij0j/45JN/+ekav/xy6r/+/Lq/////////////////////////////////////////////////////////////////////////////////////////////////////////////ffy//LOsP/moWb/4o9J/+KPSP/ikEr/4pBK/+KQSv/ikEr/4o9I/+KQSf/no2j/89Gz//348/////////////////////////////////////////////////////////////////////////////////////////7+//jk0v/qrXn/4pFL/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSP/jkUz/6q99//jm1v////7///////////////////////////////////////////////////////////////////////76+P/yzq7/5ZpZ/+KOR//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ijkj/5Ztc//PRs//++/n////////////////////////////////////////////////////////////99/H/7r6V/+OSTf/ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0n/45NP/+/Bmv/9+PT//////////////////////////////////////////////////PXw/+y3iv/ikEr/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+KQSf/ikEn/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/4pBK/+27j//99/L///////////////////////////////////////359f/tuo7/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ijkj/4o9I/+KSTf/klVP/5JdV/+SWU//ikk3/4o9I/+KOSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+6+lf/++vf//////////////////////////////fz/8Mej/+KRS//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/45RR/+mseP/xyab/9tzG//jm1v/56dv/+ObW//bcxv/xyKX/6ax3/+OVUv/ikEr/4pBK/+KQSv/ikEn/45FN//LLq////v7///////////////////////bdyP/kllT/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+mpc//23cj//vr2///////////////////////////////////////++vf/9NW6/+OVUf/ikEn/4pBK/+KQSv/ij0n/5JhX//fhz//////////////////99vD/6alz/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSf/stYb//PPr///////////////////////////////////////////////////////66t3/5JhX/+KPSf/ikEr/4pBK/+KQSv/ij0f/6q16//348/////////////PStf/ikUv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6at1//zz6////////////////////v3/+enc//LMq//uvZT/7r6V//HLqv/349H//vv4//rq3f/kmFf/4pBJ/+KQSv/ikEr/4pBK/+KQSv/jkk3/9Ne9///////99/L/6ap1/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SWU//338v//////////////////v37//LOsP/lmlv/4o9I/+KOR//ijkf/4o9I/+OVUv/qsH3/8cuq/+SXVv/ikEn/4pBK/+KQSv/ikEr/4pBK/+KOR//qr33//vn2//beyf/kllP/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ijkf/6q98//76+P/////////////////12sP/45VS/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBJ/+KPSP/jkk7/4pFL/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SYV//45NL/78CY/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSP/xy6r//////////////////vr3/+que//ijkf/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK//DHpP/oqXL/4o9I/+KQSv/ikEr/4pBK/+KQSv/ikEr/45JN//bdx//////////////////67eL/5Zpa/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6q98/+WaW//ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/jlVL/+OXU//////////////////jj0v/jlFH/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSf/moGP/45NP/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+OVU//45tb/////////////////9+LQ/+OUUP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBJ/+SYV//ikEv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//fgzP/////////////////56dz/5JhW/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45VT/+OTTv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/89G1//////////////////338f/opm3/4o9I/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSf/kl1b/5JlZ/+KQSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KOR//suIv///39//////////////////HLq//ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+aeYf/opWz/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+WbXf/6697//////////////////ffy/+y4i//ikUv/4o5H/+KPSP/ij0j/4o5H/+KPSP/lnF3/7LWH/+OVU//ikEn/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/6ax3/+25jP/ij0n/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+26j//++/n//////////////////fjz//PRtP/qsH7/56Rr/+eka//qr33/8cil//rs4P/56dv/5JhX/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KPSf/uv5j/89K1/+OSTf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//HKqf/+/Pr///////////////////////78+v/99/L//ffy//78+v////////////rq3f/kmFf/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/45NP//XYwP/6697/5Zxd/+KPSf/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/45NP/+7AmP/88un/////////////////////////////////////////////////+OPS/+SWVP/ikEn/4pBK/+KQSv/ikEr/4pBK/+KPSP/moGP/++/l//78+f/rs4P/4o5H/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEn/4o9J/+eiaP/wx6P/+OTS//zy6v/9+PT//vr2//349P/88ur/+OPR//DGov/no2j/4pBL/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o5H/+25jP///fz///////TUuv/ikUv/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+KPSP/jlVL/5p9i/+imbv/pqXP/6Kdv/+aeYf/jlVL/4o9I/+KPSP/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/jkk7/9drD/////////////PPr/+eiZ//ij0j/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ij0j/4o9I/+KOSP/ij0j/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9I/+imbv/99vD/////////////////8cek/+KPSf/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSf/ij0n/4pBJ/+KQSv/ikEr/4pBK/+KQSv/ikEr/4pBK/+KQSv/ikEr/4o9J/+KPSf/ij0n/4o9J/+KQSv/ikEr/4pBK/+KQSv/ikEr/8s2u///////////////////////77uT/5p9i/+KPR//ijkf/4o9J/+OUUP/kmVn/5Z1f/+WcXf/kl1b/45JN/+KPSP/ij0j/4pBK/+KQSv/ij0j/4o9I/+OSTv/kmFf/5Zxe/+WdX//kmlr/45RQ/+KPSf/ijkf/4o5H/+ejaf/88ur////////////////////////////xyaj/5JlZ/+uygv/yzrD/9+LQ//rt4f/78ef/+/Dm//nq3P/228X/8MSe/+inb//jk1D/45RR/+ipc//wxqL/9t3I//rr3v/78Of/+/Ho//rt4f/34s//8s6u/+uxgP/lmVr/8s+x//////////////////////////////////z17v/559f//vv5/////////////////////////////////////////////fXv//TWu//12L///ffx/////////////////////////////////////////////vv4//nn1//99/H/////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/prettyprint.css" rel="stylesheet" type="text/css">
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube" onload="PR.prettyPrint()">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/">Copper</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home">
+        <img src="/images/logo.svg" width="50px"/>
+      </a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/docs/" >Docs</a></li>
+    
+    <li><a href="/faq/" >Faq</a></li>
+    
+      </ul>
+    </nav>
+    <nav id="top-nav-extra">
+      <ul>
+        
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+<div class="push-center" itemscope itemtype="http://schema.org/BlogPosting">
+    
+<meta itemprop="name" content="Typography with kube">
+<meta itemprop="description" content="Always precise spacing and perfect font size">
+
+
+
+<meta itemprop="wordCount" content="1411">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<div id="hero">
+    <h1 itemprop="headline">  Typography with kube</h1>
+    
+<blockquote itemprop="description">Always precise spacing and perfect font size</blockquote>
+
+<time class="post-time"><span class="icon">
+  <i class="fa fa-clock-o" aria-hidden="true"></i>
+</span>
+<span>7 minute read</span>
+<span class="icon">
+ <i class="fa fa-pencil" aria-hidden="true"></i>
+</span>
+
+  Published: <time datetime="0001-01-01T00:00:00&#43;00:00">1 Jan, 0001</time>
+
+</time>
+</div>
+<div id="post-box">
+<div id="post" itemprop="articleBody">
+    
+    <p><h3 class="section-head" id="h-get-started"><a href="#h-get-started">Get Started</a></h3>
+<p>Typography of Kube based on the 4px horizontal grid, it means that for the headers, paragraphs, quotes and any other texts chosen are a combination of line-height, that fit into the 4px grid and help set the horizontal rhythm of design by default.</p>
+<figure>
+  <img alt="4px horizontal rhythm" height="180" src="/img/kube/typography/01.png" width="676">
+  <figcaption>
+    4px grid for typography - the magic of the horizontal rhythm
+  </figcaption>
+</figure>
+<p>With this feature, you can quickly and easily make a solid and harmonious-looking website and UI design. You do not need to do complicated calculations to find the size and proportions of the text baseline, no need to look for the magic formula to build a horizontal rhythm. Magic is already in Kube.</p>
+<p>You can use all the default settings of typography and it will always look balanced. But also you can easily change any font sizes, just try to set the value of line-height fold for 4px and your texts will still look great.</p>
+<p>Additional balance and harmony, creates a classic typography scale, used in Kube.</p>
+<figure>
+  <img alt="the typography scale" height="140" src="/img/kube/typography/02.png" width="520">
+  <figcaption>
+    The typography scale helps to build a balance between the size of headings and text elements
+  </figcaption>
+</figure>
+<h3 class="section-head" id="h-headings"><a href="#h-headings">Headings</a></h3>
+<p>Use h1-h6 tags or <code>.h1-.h6</code> classes to define headers and <code>class=&ldquo;title&rdquo;</code> for the title, which is suitable for the most important inscriptions, for example, in the hero or covers.</p>
+<div class="example">
+  <h1 class="title">Title</h1>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;title&rdquo;</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+&hellip;
+<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span></pre>
+</div>
+<h3 class="section-head" id="h-paragraphs"><a href="#h-paragraphs">Paragraphs</a></h3>
+<p>The base pragraph has an ideal ratio of font size and baseline. This text is easy to read in most cases.</p>
+<div class="example">
+  <p class="section-item-desc">16px/24px</p>
+  <p>By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver.</p>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre>
+</div>
+<p>In special cases, you can use modifiers which increase or decrease the text size. It is useful for building a variety of websites and UI, when you need to make a lead text or signatures with a small font size .</p>
+<div class="example">
+  <p class="section-item-desc">20px/32px</p>
+  <p class="large">By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver.</p>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;large&rdquo;</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre>
+</div>
+<div class="example">
+  <p class="section-item-desc">18px/28px</p>
+  <p class="big">By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver.</p>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;big&rdquo;</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre>
+</div>
+<div class="example">
+  <p class="section-item-desc">14px/20px</p>
+  <p class="small">By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver.</p>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;small&rdquo;</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre>
+</div>
+<div class="example">
+  <p class="section-item-desc">12px/20px</p>
+  <p class="smaller">By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver.</p>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;smaller&rdquo;</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre>
+</div>
+<h3 class="section-head" id="h-columns"><a href="#h-columns">Columns</a></h3>
+<p>Kube has three classes of <code>.columns-2</code> through <code>.columns-4</code> to create a multi-column layout. All multi-column layouts will be in a single column on mobile.</p>
+<div class="example">
+  <p class="section-item-desc">2 columns</p>
+  <div class="columns-2">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;columns-2&rdquo;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+</div>
+<div class="example">
+  <p class="section-item-desc">3 columns</p>
+  <div class="columns-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;columns-3&rdquo;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+</div>
+<div class="example">
+  <p class="section-item-desc">4 columns</p>
+  <div class="columns-4">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;columns-4&rdquo;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+</div>
+<h3 class="section-head" id="h-quotes"><a href="#h-quotes">Quotes</a></h3>
+<p>Quotes in the text stand out for contrast and added variety to the text. In the quotes you can mark text as a paragraph tag and without it.</p>
+<div class="example">
+  <blockquote>
+    <p>No, she&rsquo;ll probably make me do it. Goodbye, friends. I never thought I&rsquo;d die like this. But I always really hoped. I saw you with those two &ldquo;ladies of the evening&rdquo; at Elzars. Explain that. I never loved you.</p>
+  </blockquote>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span></pre>
+</div>
+<p>Use <code>small</code> tag for attribution. It&rsquo;s a prefer way for semantic code.</p>
+<div class="example">
+  <blockquote>
+    <p>Who&rsquo;s brave enough to fly into something we all keep calling a death sphere? Yes. You gave me a dollar and some candy. I just want to talk. It has nothing to do with mating. Fry, that doesn&rsquo;t make sense.</p><small>— Bender</small>
+  </blockquote>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Quotation content<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Author attribution<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+</pre>
+</div>
+<h3 class="section-head" id="h-pre-formatted"><a href="#h-pre-formatted">Pre-formatted</a></h3>
+<p>Pre-formatted text most often used to display code snippets or other text elements, for which you wish to preserve the exact formatting they&rsquo;ve got.</p>
+<div class="example">
+  <pre>Function.prototype.inherits = function(parent)
+{
+    for (var key in parent.prototype)
+    {
+        this.prototype[key] = parent.prototype[key];
+    }
+};
+</pre>
+  <pre class="code"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></pre>
+</div>
+<p>You feel free to use <code>code</code> tag inside <code>pre</code>.</p>
+<div class="example">
+  <pre class="demo-pre"><code>Function.prototype.inherits = function(parent)
+{
+    for (var key in parent.prototype)
+    {
+        this.prototype[key] = parent.prototype[key];
+    }
+};
+</code></pre>
+  <pre class="code">&lt;pre&gt;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span></pre>
+</div>
+<h3 class="section-head" id="h-inline-elements"><a href="#h-inline-elements">Inline Elements</a></h3>
+<p>Kube features various inline formatting elements. They all have their own semantic meaning, but you&rsquo;re free to use them just for their style.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Example</th>
+      <th>Tag</th>
+      <th>Example</th>
+      <th>Tag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><abbr title="Cascading Style Sheets">CSS</abbr></td>
+      <td class="col-6"><code>&lt;abbr&gt;</code></td>
+      <td><cite>Cite</cite></td>
+      <td class="col-6"><code>&lt;cite&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>Code</code></td>
+      <td><code>&lt;code&gt;</code></td>
+      <td><samp>Sample</samp></td>
+      <td><code>&lt;samp&gt;</code></td>
+    </tr>
+    <tr>
+      <td><var>Variable</var></td>
+      <td><code>&lt;var&gt;</code></td>
+      <td><mark>Mark</mark></td>
+      <td><code>&lt;mark&gt;</code></td>
+    </tr>
+    <tr>
+      <td><kbd>Shortcut</kbd></td>
+      <td><code>&lt;kbd&gt;</code></td>
+      <td>
+        <del>Deleted</del>
+      </td>
+      <td><code>&lt;del&gt;</code></td>
+    </tr>
+    <tr>
+      <td><i>Italic</i></td>
+      <td><code>&lt;i&gt;</code></td>
+      <td><em>Emphasis</em></td>
+      <td><code>&lt;em&gt;</code></td>
+    </tr>
+    <tr>
+      <td><strong>Highlighted</strong></td>
+      <td><code>&lt;strong&gt;</code></td>
+      <td><b>Bold</b></td>
+      <td><code>&lt;b&gt;</code></td>
+    </tr>
+    <tr>
+      <td>x<sup>superscript</sup></td>
+      <td><code>&lt;sup&gt;</code></td>
+      <td>x<sub>subscript</sub></td>
+      <td><code>&lt;sub&gt;</code></td>
+    </tr>
+    <tr>
+      <td><small>Small</small></td>
+      <td><code>&lt;small&gt;</code></td>
+      <td>
+        <ins>Inserted</ins>
+      </td>
+      <td><code>&lt;ins&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="section-head" id="h-modifiers"><a href="#h-modifiers">Modifiers</a></h3>
+<p>Modifiers - a set of helper classes for creating accents in the text and for the solution of useful tasks without writing CSS code, for example, the alignment of the text in the center.</p>
+<p>Modifiers can be applied to any tags as inline elements, links or block tags.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Example</th>
+      <th>Modifier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="muted">Muted</span></td>
+      <td class="col-12"><code>.muted</code></td>
+    </tr>
+    <tr>
+      <td>
+        <a class="muted" href="#">Muted link</a>
+      </td>
+      <td><code>.muted</code></td>
+    </tr>
+    <tr>
+      <td>
+        <a class="black" href="#">Black link</a>
+      </td>
+      <td><code>.black</code></td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Highlight</span></td>
+      <td><code>.highlight</code></td>
+    </tr>
+    <tr>
+      <td><span class="upper">upper</span></td>
+      <td><code>.upper</code></td>
+    </tr>
+    <tr>
+      <td><span class="lower">LOWER</span></td>
+      <td><code>.lower</code></td>
+    </tr>
+    <tr>
+      <td><span class="italic">Italic</span></td>
+      <td><code>.italic</code></td>
+    </tr>
+    <tr>
+      <td><span class="strong">Strong</span></td>
+      <td><code>.strong</code></td>
+    </tr>
+    <tr>
+      <td><strong class="normal">Not strong</strong></td>
+      <td><code>.normal</code></td>
+    </tr>
+    <tr>
+      <td><span class="monospace">Monospace</span></td>
+      <td><code>.monospace</code></td>
+    </tr>
+    <tr>
+      <td><span class="nowrap">Nowrap</span></td>
+      <td><code>.nowrap</code></td>
+    </tr>
+    <tr>
+      <td class="nowrap">Remove margin bottom</td>
+      <td><code>.end</code></td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Highlight</span></td>
+      <td><code>.highlight</code></td>
+    </tr>
+    <tr>
+      <td><span class="small">Small</span></td>
+      <td><code>.small</code></td>
+    </tr>
+    <tr>
+      <td><span class="smaller">Smaller</span></td>
+      <td><code>.smaller</code></td>
+    </tr>
+    <tr>
+      <td><span class="large">Large</span></td>
+      <td><code>.large</code></td>
+    </tr>
+    <tr>
+      <td><span class="big">Big</span></td>
+      <td><code>.big</code></td>
+    </tr>
+    <tr>
+      <td class="text-left">Text left</td>
+      <td><code>.text-left</code></td>
+    </tr>
+    <tr>
+      <td class="text-center">Text center</td>
+      <td><code>.text-center</code></td>
+    </tr>
+    <tr>
+      <td class="text-right">Text right</td>
+      <td><code>.text-right</code></td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="section-head" id="h-figure"><a href="#h-figure">Figure</a></h3>
+<p>A figure tag features an image, a video or a code plus a caption. It is a good accessibility practice. It also helps serve responsive video to various devices when you wrap video into <code>.video-container</code> class.</p>
+<h5>Images</h5>
+<figure>
+  <img alt="Image" height="533" src="/img/favicons/logo-384x384.png" width="800">
+  <figcaption>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit&hellip;
+  </figcaption>
+</figure>
+<p class="end"><var>HTML</var></p>
+<pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&ldquo;image.jpg&rdquo;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+</pre>
+<h5>Video</h5>
+<figure>
+  <div class="video-container">
+    <iframe allowfullscreen frameborder="0" height="315" src="https://www.youtube.com/embed/nywsA8wCCfY" width="560"></iframe>
+  </div>
+  <figcaption>
+    Journey Through The Ice | National Geographic
+  </figcaption>
+</figure>
+<p class="end"><var>HTML</var></p>
+<pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;video-container&rdquo;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">iframe</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+</pre>
+<h5>Code</h5>
+<figure>
+  <pre>Function.prototype.inherits = function(parent)
+{
+    for (var key in parent.prototype)
+    {
+        this.prototype[key] = parent.prototype[key];
+    }
+};
+</pre>
+  <figcaption>
+    One of the implementations of inheritance
+  </figcaption>
+</figure>
+<p class="end"><var>HTML</var></p>
+<pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+</pre>
+<h3 class="section-head" id="h-lists"><a href="#h-lists">Lists</a></h3>
+<p>Although you most likely will not ever need to do so, you can still nest as many list levels as you like.</p>
+<div class="row gutters">
+  <div class="col col-6">
+    <div class="example">
+      <ul>
+        <li>list item 1</li>
+        <li>list item 2
+          <ul>
+            <li>list item 2.1</li>
+            <li>list item 2.2
+              <ul>
+                <li>list item 2.2.1</li>
+                <li>list item 2.2.2</li>
+              </ul>
+            </li>
+            <li>list item 2.3</li>
+            <li>list item 2.4</li>
+          </ul>
+        </li>
+        <li>list item 3</li>
+        <li>list item 4</li>
+      </ul>
+      <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</pre>
+    </div>
+  </div>
+  <div class="col col-6">
+    <div class="example">
+      <ol>
+        <li>list item 1</li>
+        <li>list item 2
+          <ol>
+            <li>list item 2.1</li>
+            <li>list item 2.2
+              <ol>
+                <li>list item 2.2.1</li>
+                <li>list item 2.2.2</li>
+              </ol>
+            </li>
+            <li>list item 2.3</li>
+            <li>list item 2.4</li>
+          </ol>
+        </li>
+        <li>list item 3</li>
+        <li>list item 4</li>
+      </ol>
+      <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+</pre>
+    </div>
+  </div>
+</div>
+<h5>Unstyled List</h5>
+<p>To remove default list styling, use <code>.unstyled</code>.</p>
+<div class="example">
+  <ul class="unstyled">
+    <li>list item 1</li>
+    <li>list item 2
+      <ul>
+        <li>list item 2.1</li>
+        <li>list item 2.2</li>
+      </ul>
+    </li>
+    <li>list item 3</li>
+    <li>list item 4</li>
+  </ul>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&ldquo;unstyled&rdquo;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</pre>
+</div>
+<h5>Definition List</h5>
+<p>From time to time, you may need to produce a list of definitions, and there&rsquo;s one nicely built-in into Kube. We love semantic things. And lists. We love lists.</p>
+<div class="example">
+  <dl>
+    <dt>Term 1</dt>
+    <dd>Description 1</dd>
+    <dt>Term 2</dt>
+    <dd>Description 2</dd>
+    <dt>Term 3</dt>
+    <dd>Description 3</dd>
+  </dl>
+  <pre class="code skip"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Term<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+</pre>
+</div></p>
+
+
+</div>
+
+<div class="form-subscribe">
+    <div id="form-subscribe-success" style="display: none;"></div>
+<div id="form-subscribe-box">
+        <h4>All about Redactor, Grafs and Kube.</h4>
+        <p>Monthly news &amp; updates. Just straight to the point.</p>
+
+        <form action="" name="mc-embedded-subscribe-form" method="post" class="form"><input type="hidden" name="authorize-token" value="">
+            <div id="subscribe-email-validation-error"></div>
+            <div class="form-item">
+                <div class="append">
+                    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+                    <button class="button">Subscribe</button>
+                </div>
+            </div>
+    
+            
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+        </form>
+
+        <div class="form-subscribe-twitter"><div>or</div> <a href="https://twitter.com/jebli_7">Follow us on Twitter</a></div>
+    </div>
+</div>
+
+    <div class="">
+        <p>
+  Published
+  
+    
+      by <span itemprop="author">Cloud 66</span>
+    
+  
+  <time datetime="0001-01-01T00:00:00&#43;00:00">
+    1 Jan, 0001
+  </time>
+  
+  
+  using <span itemprop="wordCount">1411</span> words.
+</p>
+
+        
+
+
+
+    </div>
+    
+    
+    
+</div>
+</div>
+</main>
+  <footer>   <footer id="footer">
+    <nav>
+      <ul>
+        <li><span>Copper</span></li>
+        <li>
+          <a href="/company/">Company</a>
+        </li>
+          <li>
+          <a href="/docs/">Docs</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/cloud66">Follow us on Twitter</a>
+        </li>
+      </ul>
+    </nav>
+    <p>&copy; 2018 &ndash; <a href="https://cloud66.com">Cloud66 Inc</a></p>
+  </footer>
+ </footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+  <script src="/libraries/prettify/prettify.js"></script>
+</body>
+
+</html>

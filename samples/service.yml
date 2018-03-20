@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: foobar
+  name: foo-svc
+  annotations:
+    cloud66.com/snapshot-uid: 123-456-789
+    cloud66.com/snapshot-gitref: abcd
+  labels:
+    app: foo
+    tier: bar
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8090
+  - port: 8100
+    targetPort: 8100
+  - port: 5000
+  selector:
+    app: foo
+    tier: bar
