@@ -1,0 +1,110 @@
+{{ define "title"}} {{ .Site.Title}} {{end}}
+{{ define "header"}} {{ partial "header" .}} {{end}}
+{{ define "main"}}
+
+<div id="main">
+  <div id="hero">
+    <h1>{{.Title}}</h1>
+    <p>{{.Description}}</p>
+  </div>
+  <div id="action-buttons">
+    <a class="button primary big" href="/docs/getting-started">Get Started</a> <a class="button outline big" href="https://github.com/cloud66/copper" onclick="_gaq.push(['_trackEvent', 'kube', 'github']);">View on Github</a>
+  </div>
+  <div class="row">
+    <div class="col col-8 push-center">
+        <h3>What is Copper?</h3>
+        <p>
+            Copper is a configuration validator for Kubernetes by <a href="https://cloud66.com">Cloud 66</a>.
+        </p>
+        <h3>Why do I need Copper?</h3>
+        <p>
+            We built Copper to achive 2 main goals:
+            <ol>
+                <li>Let developers make changes to Kubernetes configuration files as they needed</li>
+                <li>Make sure all configuration files applied to our Kubernetes clusters are tested and adhere to our infrastructure policies.</li>
+            </ol>
+        </p>
+        <p>
+            If you use systems like Kubernetes, commit configuration files into a code repository and want to rest peacfully at night knowing your configurations are always tested, then you need Copper.
+        </p>
+
+        <h4>What to validate with Kubernetes configuration files?</h4>
+        <p>
+            These are some of the things we check in our configuration files committed into your git repository:
+            <ul>
+                <li><code>latest</code> is not used as the image tag for any Deployment</li>
+                <li>Image versions are not changed for imporant components (like databases) except for minor versions and patches.</li>
+                <li>Load balancer IP address is not changed in Service configuration by mistake</li>
+                <li>Any fixed IP address used is within a valid range</li>
+                <li>No secret is committed into the configuration repository (we use <a href="http://gifnoc.com/">Gifnoc</a> to replace those later on a secure machine).</li>
+                <li>Certain images come from our trusted repositories and not public ones.</li>
+            </ul>
+        </p>
+        <p>
+            For us these checks are like unit tests: they are there to make sure changes are made with confidence and human or machine errors are mitigated. Obviously these are not security measures and should be developed and treated exactly like your CI code tests.
+        </p>
+        <h3>How do I use Copper?</h3>
+        <p>You can use Copper as a command line or docker image, integrating it with you CI/CD or as a library in your own code.</p>
+        <h3>A Basic Example</h3>
+        <p>
+            This is a very simple Kubernetes configuration file. We have saved it as <code>deploy.yml</code>:
+<pre class="prettyprint">
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    namespace: foobar
+    name: foo
+spec:
+    template:
+        spec:
+            containers:
+            - name: mysql
+                image: index.docker.io/library/mysql:6.5.0
+</pre>
+        </p>
+        <p>
+            As this configuration file is changed, we want to make sure the image tag for MySQL is never set to <code>latest</code>
+        </p>
+        <p>
+            To do this, we use Copper's simple DSL to check the configuration validation:
+<pre class="prettyprint">
+rule NoLatest ensure {  // use of latest as image tag is not allowed
+    fetch("$.spec.template.spec.containers[?(@.name == 'mysql')].image")
+        .extract(".*:(.*)", 1)
+        .contains("latest") == false
+}
+</pre>
+        </p>
+        <p>
+            Save this file as <code>my_rules.cop</code> and run Copper CLI:
+        </p>
+<pre class="prettyprint">$ copper check --rules my_rules.cop --file deploy.yml</pre>
+        <p>
+            Here is what you will see:
+            <pre class="prettyprint">
+Validating part 0
+    noLatest - PASS</pre>
+        </p>
+        <h3>Can I use Copper for configuration files other than Kubernetes?</h3>
+        <p>
+            Absolutely! While Copper DSL has features that are very useful for Kubernetes configuration file validation, like IP Address parsing or build-in Semantic Version support for docker images, there is nothing specific in Copper that's locked in to Kubernetes. Currently Copper supports YAML configuration files, but adding new types like JSON or Toml is very easy.
+        </p>
+        <h3>Who are you?</h3>
+        <p>
+            Copper is an open source project developed and used by <a href="https://cloud66.com">Cloud 66</a>. It is distributed under Apache 2.0 license</p>
+        </p>
+        <h3>Can I use Copper in production?</h3>
+        <p>
+            Yes! We've been using Copper in production for <a href="https://cloud66.com/containers/skycap">Cloud 66 Skycap</a> and our own Kubernetes infrastructure for a while now.
+        </p>
+    </div>
+  </div>
+  <div id="action-buttons">
+      <p>
+        <a class="button primary big" href="/docs/getting-started">Get Started</a> <a class="button outline big" href="https://github.com/cloud66/copper" onclick="_gaq.push(['_trackEvent', 'kube', 'github']);">View on Github</a>
+    </p>
+  </div>
+</div>
+</div>
+{{ end }}
+{{ define "footer"}} {{ partial "footer" .}} {{end}}
