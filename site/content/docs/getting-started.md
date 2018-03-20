@@ -13,7 +13,7 @@ toc = false
 Copper validates configuration files using **Rules**. Rules are descriptions of what you would like to see (or don't see) in a configuration file. You can think of Rules like code unit tests, but for configuration.
 
 ## Installation
-Copper is available as a Ruby gem. We recommend installig Copper using Rubygems.
+Copper is available as a Ruby gem. We recommend installing Copper using Rubygems.
 
 To install Copper, use the following command:
 
@@ -31,7 +31,7 @@ Rules are stored in files and each file can contain one of many rules. You can r
 
 ## Writing your first rule file
 
-Open up your favourite text editor and enter the following text into a new file called `my_rule.cop`:
+Open up your favorite text editor and enter the following text into a new file called `my_rule.cop`:
 
 <pre class="prettyprint linenums">
 rule ApiV1Only ensure {
@@ -47,7 +47,7 @@ rule ApiV1Only ensure {
 
 ## Validate with your first rule
 
-Now that you have the rule to check for the API version, let's have a look at the configuraiton file. If you have a Kubernetes configuration file, you can use this rule against that (as all Kubernetes configuration files have the `apiVersion` attribute). Here is an example you can use:
+Now that you have the rule to check for the API version, let's have a look at the configuration file. If you have a Kubernetes configuration file, you can use this rule against that (as all Kubernetes configuration files have the `apiVersion` attribute). Here is an example you can use:
 
 <pre class="prettyprint">
 apiVersion: v1
@@ -79,7 +79,7 @@ Validating part 0
     ApiV1Only - PASS
 </pre>
 
-**Line 1**: Copper CLI can read multipart YAML files, separated by `---`. `Validating part 0` means Copper is now validating the first part of the YAML configuration file. As our configuration file only has 1 part, we are only going to see `Validation part 0`.
+**Line 1**: Copper CLI can read multi-part YAML files, separated by `---`. `Validating part 0` means Copper is now validating the first part of the YAML configuration file. As our configuration file only has 1 part, we are only going to see `Validation part 0`.
 
 **Line 2**: This line shows that rule `ApiV1Only` has passed the validation successfully.
 

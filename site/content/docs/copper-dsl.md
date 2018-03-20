@@ -87,10 +87,10 @@ rule bar ensure {
 }*/
 </pre>
 
-### Comparisions
+### Comparisons
 The condition inside of a rule is usually made up of a value compared against another value. The result of this comparison is either true or false.
 
-The comparision operation can be one of the following:
+The comparison operation can be one of the following:
 
 <table class="striped">
 	<tr><th>Operation</th><th>Meaning</th></tr>
@@ -210,7 +210,7 @@ You can use `=` or `==` to compare two arrays. This will return true if both arr
 
 ##### Inclusion
 
-You can use the `in` comparision for arrays: `1 in [1,2,3]` is true and `"foo" in ["bar", "fuzz"]` is false.
+You can use the `in` comparison for arrays: `1 in [1,2,3]` is true and `"foo" in ["bar", "fuzz"]` is false.
 
 #### Range
 
@@ -227,7 +227,7 @@ Returns true if the given item can be found in the range: `(1..10).contains(1)` 
 
 ##### Inclusion
 
-You can use the `in` comparision for ranges: `10 in (1..10)` is true and `13 in (23..45)` is false.
+You can use the `in` comparison for ranges: `10 in (1..10)` is true and `13 in (23..45)` is false.
 
 
 ### Complex data types
@@ -236,7 +236,7 @@ Copper DSL supports a growing set of configuration specific data types. Currentl
 
 #### IPAddress
 
-An IPaddress can hold an IP address and/or subnet. You can use IPAddress to check various things about an IPAddress, like it's range, inclusion of other IP addresses, its class and more.
+An IPAddress can hold an IP address and/or subnet. You can use IPAddress to check various things about an IPAddress, like it's range, inclusion of other IP addresses, its class and more.
 
 **Example**
 <pre class="prettyprint">
@@ -284,14 +284,14 @@ Returns true if the given IP address is a local loopback address. `ipaddress("12
 
 <h5><span class="code-attribute">is_multicast</span></h5>
 
-Returns true if the given IP address is a multicase address. `ipaddress("224.0.0.1/32").is_multicast` will return true.
+Returns true if the given IP address is a multicast address. `ipaddress("224.0.0.1/32").is_multicast` will return true.
 
 <h5><span class="code-attribute">is_class_a</span></h5>
 
 Returns true if the given IP address is a class A IP address. `ipaddress("10.0.0.1/24").is_class_a` will return true.
 
 ##### Inclusion
-Inclusion of an IP address in a network IP range can be checked using the `in` comparision. For example `ipaddress("10.1.1.32") in ipaddress("10.1.1.0/24")` returns true.
+Inclusion of an IP address in a network IP range can be checked using the `in` comparison. For example `ipaddress("10.1.1.32") in ipaddress("10.1.1.0/24")` returns true.
 
 <h5><span class="code-attribute">is_class_b</span></h5>
 
@@ -336,7 +336,7 @@ Checks if a semver satisfies a Pessimistic version comparison: `semver("1.6.5").
 
 ##### Comparison
 
-You can use `<`, `>`, `=`, `==`, `<=`, `>=` and `!=` comparisions betwene two semvers.
+You can use `<`, `>`, `=`, `==`, `<=`, `>=` and `!=` comparisons between two semvers.
 
 ### Type conversion and parsing
 In most cases, values read from a configuration file are strings. In order for them to be usable with Copper DSL's complex data types, you can read them as different types using the `as` function.
