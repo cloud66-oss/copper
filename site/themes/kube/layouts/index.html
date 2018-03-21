@@ -18,10 +18,10 @@
         </p>
         <h3>Why do I need Copper?</h3>
         <p>
-            We built Copper to achive 2 main goals:
+            We built Copper to achieve 2 main goals:
             <ol>
-                <li>Let developers make changes to Kubernetes configuration files as they needed instead of restricting what they can do with another layer of APIs on top of it.</li>
-                <li>Make sure all configuration files applied to our Kubernetes clusters are tested and adhere to our infrastructure policies.</li>
+                <li>Let developers make changes to Kubernetes configuration files as needed instead of restricting what they can do with another layer of APIs on top.</li>
+                <li>Make sure all configuration files applied to the Kubernetes clusters are tested and adhere to the relevant infrastructure policies.</li>
             </ol>
             In short, we thought if <i>infrastructure as code</i> is the right way to go, then we need to apply the same principles we use for code to infrastructure configuration as well.
         </p>
@@ -64,7 +64,7 @@ spec:
 </pre>
         </p>
         <p>
-            As this configuration file is changed, we want to make sure the image tag for MySQL is never set to <code>latest</code>
+            As this configuration file is changed, we want to make sure the image tag for MySQL is never set to <code>latest</code>.
         </p>
         <p>
             To do this, we use Copper's simple DSL to check the configuration validation:
@@ -88,11 +88,11 @@ Validating part 0
         </p>
         <h3>Can I use Copper for configuration files other than Kubernetes?</h3>
         <p>
-            Absolutely! While Copper DSL has features that are very useful for Kubernetes configuration file validation, like IP Address parsing or build-in Semantic Version support for docker images, there is nothing specific in Copper that's locked in to Kubernetes. Currently Copper supports YAML configuration files, but adding new types like JSON or Toml is very easy.
+            Absolutely! While Copper DSL has features that are very useful for Kubernetes configuration file validation, like IP Address parsing or build-in Semantic Version support for Docker images, there is nothing specific in Copper that's locked in to Kubernetes. Currently Copper supports YAML configuration files, but adding new types like JSON or Toml is very easy.
         </p>
         <h3>Who are you?</h3>
         <p>
-            Copper is an open source project developed and used by <a href="https://cloud66.com">Cloud 66</a>. It is distributed under MPL 2.0 license</p>
+            Copper is an open source project developed and used by <a href="https://cloud66.com">Cloud 66</a>. It is distributed under MPL 2.0 license</p>.
         </p>
         <h3>Can I use Copper in production?</h3>
         <p>
