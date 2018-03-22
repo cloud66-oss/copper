@@ -71,7 +71,7 @@ spec:
 <pre class="prettyprint">
 rule NoLatest ensure {  // use of latest as image tag is not allowed
     fetch("$.spec.template.spec.containers..image")
-        .as(:Image)
+        .as(:image)
         .pick(:tag)
         .contains("latest") == false
     }

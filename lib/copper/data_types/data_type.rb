@@ -13,7 +13,9 @@ module Copper
 				"IPAddress::IPv6" => "::Copper::DataTypes::IPAddress",
 				"Copper::DataTypes::Image" => "::Copper::DataTypes::Image",
 				"Image" => "::Copper::DataTypes::Image",
-				"Copper::DataTypes::ImageClass" => "::Copper::DataTypes::Image"
+				"Copper::DataTypes::ImageClass" => "::Copper::DataTypes::Image",
+				"Copper::DataTypes::FilenameClass" => "::Copper::DataTypes::Filename",
+				"Copper::DataTypes::Filename" => "::Copper::DataTypes::Filename"
 			}
 
 			def initialize(value)
@@ -25,6 +27,7 @@ module Copper
 			end
 
 			def as(clazz)
+				clazz = clazz.capitalize
 				found_class = ::Copper::DataTypes::DataType.get_class(clazz)
 				return found_class.new(@value).value
 			end

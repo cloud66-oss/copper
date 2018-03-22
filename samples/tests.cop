@@ -52,15 +52,26 @@ rule Console ensure {
 
 rule AsPickAs ensure {
 	fetch("$.spec.template.spec.containers..image")
-	.as(:Image)
+	.as(:image)
 	.pick(:tag)
-	.as(:Semver)
+	.as(:semver)
 	.first == "16.6.9"
 }
 
 rule NoLatest ensure {
 	fetch("$.spec.template.spec.containers..image")
-	.as(:Image)
-	.pick(:tag)
+	.as(:image)
+	.pick(:name)
 	.contains("latest") == false
+}
+
+rule GetFilename ensure {
+	filename.name == "test" and
+	filename.ext == ".yml" and
+	filename.path == "samples" and
+	filename.full_name == "samples/test.yml"
+}
+
+rule Split ensure {
+	"foo/bar/baz".split("/") == ["bar", "baz", "foo"]
 }

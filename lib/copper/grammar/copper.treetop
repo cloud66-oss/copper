@@ -65,7 +65,7 @@ grammar Copper
 	end
 
 	rule func
-		(fetch_func / func_ipaddress / func_semver / func_image)
+		(fetch_func / func_ipaddress / func_semver / func_image / func_filename)
 	end
 
 	rule fetch_func
@@ -82,6 +82,10 @@ grammar Copper
 
 	rule func_image
 		'image' s '(' (string / variable) s ')' (attributes)? <Functions::Image>
+	end
+
+	rule func_filename
+		'filename' (attributes)? <Functions::Filename>
 	end
 
 	rule attributes
@@ -129,7 +133,7 @@ grammar Copper
 	end
 
 	rule symbol
-		':' ([a-zA-Z] [a-zA-Z0-9_]*) <Symbol>
+		':' ([a-z] [a-z0-9_]*) <Symbol>
 	end
 
 	rule comp_op

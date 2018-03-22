@@ -31,6 +31,7 @@ module Copper
 
 			# map the items into the given class
 			def as(clazz)
+				clazz = clazz.capitalize
 				found_class = ::Copper::DataTypes::DataType.get_class(clazz)
 				return @value.map { |x| found_class.new(x).value }
 			end

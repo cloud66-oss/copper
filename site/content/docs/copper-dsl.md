@@ -158,6 +158,10 @@ For example `"abc".gsub("b", "!")` will return `"a!c"`.
 
 Returns the character at the given index: `"abc".at(2)` returns `"b"`.
 
+<h5><span class="code-attribute">split</span></h5>
+
+Splits the string into an array: `"foo/bar/baz".split("/")` returns `["foo", "bar", "baz"]`.
+
 #### Array
 Arrays can contain any number of values. Arrays can hold values of different types. An array is wrapped in `[` and `]` and each item is separated by a `,`.
 
@@ -201,6 +205,23 @@ Runs each item of a string only array through a regular expression and returns t
 **Another example**
 
 `["path1/image1:tag1", "path2/image2:tag2"].extract(".*\/(.*):.*", 2)` will return `["image1", "image2", "image3"]`.
+
+
+<h5><span class="code-attribute">as</span></h5>
+
+Converts each element of an array into a different data type. For example this can be used to convert an array of strings into Image data type.
+
+`["quay.io/mysql:1.2.3", "ubuntu:3.2.1"].as(:image)` returns an array of `Image` data type (see below).
+
+<h5><span class="code-attribute">pick</span></h5>
+
+Returns an array by picking an attributes off of each item of the array. For example this can be used to pick the `tag` attribute of an array of `Image`.
+
+The example below returns the length of each element of an array:
+
+`["a", "xo", "foo"].pick(:count)` returns `[1, 2, 3]`
+
+`pick` takes in the name of the attribute to pick in the form of a `:` followed by the attribute name. For example to pick the `tag` attribute you can use `pick(:tag)`.
 
 ##### Equality
 
@@ -338,8 +359,39 @@ Checks if a semver satisfies a Pessimistic version comparison: `semver("1.6.5").
 
 You can use `<`, `>`, `=`, `==`, `<=`, `>=` and `!=` comparisons between two semvers.
 
+#### Image
+Image holds a Docker image path and lets you access its different parts. It also understands some of the particular attributes of docker images (like no registry name means DockerHub or no tag means latest).
+
+For example, you can parse a string containing an image name to an `Image` like this:
+
+`var i = image("quay.io/cloud66/mysql:5.6.1")` this will let you access the image name constituents:
+
+`i.registry` or `i.tag`. The `Image` type, combined with `as` and `pick` will make a powerful tool for inspecting images used in a configuration file.
+
+<h5><span class="code-attribute">registry</span></h5>
+
+Returns the registry name of the image. It will return `index.docker.io` if no registry is available in the image name.
+
+<h5><span class="code-attribute">name</span></h5>
+
+Returns the name of the image. It will append `library/` to the beginning of the image name if no namespace is available on the image name (DockerHub image names). For example, `ubuntu:1.2.3` will return `library/ubuntu` as `name`.
+
+<h5><span class="code-attribute">tag</span></h5>
+
+Returns the tag of the image. It will return `latest` if no tag is available on the image. For example `mysql` will return `latest` as the `tag`.
+
+<h5><span class="code-attribute">registry_url</span></h5>
+
+Returns the URL for the registry, including the scheme. For example, `quay.io/ubuntu:1.2.3` returns `https://quay.io` as `registry_url`.
+
+<h5><span class="code-attribute">fqin</span></h5>
+
+Returns the Fully Qualified Image Name. This includes the scheme. For example `ubuntu` will return `https://index.docker.io/library/ubuntu:latest`.
+
 ### Type conversion and parsing
 In most cases, values read from a configuration file are strings. In order for them to be usable with Copper DSL's complex data types, you can read them as different types using the `as` function.
+
+`As` function takes in a type name which is a `:` followed by the type name. For example to convert a string into a `Semver` use `:semver` in the `as` function: `"1.2.3".as(:semver)`
 
 **Example**
 <p class="small">
@@ -347,11 +399,35 @@ Here, we are assuming the value of the `mysql_version` variable is a string `"5.
 </p>
 
 <pre class="prettyprint">
-mysql_version.as(semver).satisfies("~> 5.6")
+mysql_version.as(:semver).satisfies("~> 5.6")
 </pre>
 
-### Reading from configuration files
+### Accessing configuration filename
 
+The full name of the configuration file used in a check is available in the Copper DSL as `filename`. `filename` is a `Filename` data type with the following attributes:
+
+<h5><span class="code-attribute">path</span></h5>
+
+Returns the path to the configuration file (excluding the filename). For example `samples/test.yml` returns `samples`.
+
+<h5><span class="code-attribute">name</span></h5>
+
+Returns the filename of the configuration file (excluding the path). For example `samples/test.yml` returns `test`.
+
+<h5><span class="code-attribute">ext</span></h5>
+
+Returns the file extension of the configuration file (including the leading `.`). For example `samples/test.yml` returns `.yml`.
+
+
+<h5><span class="code-attribute">full_name</span></h5>
+
+Returns the full filename of the configuration file. For example `samples/test.yml` returns `samples/test.yml`.
+
+<h5><span class="code-attribute">expanded_path</span></h5>
+
+Returns the full expanded file path of the configuration file. For example `samples/test.yml` will return (depending on the absolute location of the file) something like `/Users/john/projects/tests/kubernetes/samples/test.yml`.
+
+### Reading from configuration files
 Copper DSL uses [JSONPath](http://goessner.net/articles/JsonPath/) format to read values from a configuration file. For any configuration file format, the content is first read and converted in to JSON which makes it possible to use JSONPath to find nodes and attributes in the configuration file.
 
 The `fetch` function accepts the JSONPath and returns an array of all matching nodes and attributes in the configuration.

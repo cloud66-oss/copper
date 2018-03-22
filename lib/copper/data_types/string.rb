@@ -10,6 +10,10 @@ module Copper
 				return @value.gsub(pattern, replacement)
 			end
 
+			def split(separator)
+				return @value.split(separator)
+			end
+
 			def at(index)
 				if index >= @value.size
 					raise ParseError, "index #{index} out of bound [0..#{@result.size - 1}]"

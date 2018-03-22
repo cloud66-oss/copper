@@ -56,15 +56,15 @@ module Copper
 			content.split('---').each_with_index do |part, idx|
 				puts "Validating part #{idx}"
 				file = YAML::load(part)
-				failed = validate(rules, file)
+				failed = validate(rules, file, content_file)
 			end
 
 			exit(1) if failed
 		end
 
 		no_commands {
-		def validate(rules, file)
-			ccop = ::Copper::Copper.new(rules, { context: file })
+		def validate(rules, file, filename)
+			ccop = ::Copper::Copper.new(rules, { context: file, filename: filename })
 			results = ccop.execute
 
 			if results.nil?

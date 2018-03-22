@@ -26,6 +26,14 @@ module Copper
 				@value[:tag]
 			end
 
+			def registry_url
+				@value[:registry_url]
+			end
+
+			def fqin
+				@value[:fqin]
+			end
+
 			private
 
 			def deconstruct_image(source_image)
