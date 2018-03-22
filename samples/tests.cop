@@ -57,3 +57,10 @@ rule AsPickAs ensure {
 	.as(:Semver)
 	.first == "16.6.9"
 }
+
+rule NoLatest ensure {
+	fetch("$.spec.template.spec.containers..image")
+	.as(:Image)
+	.pick(:tag)
+	.contains("latest") == false
+}

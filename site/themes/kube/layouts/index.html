@@ -70,10 +70,11 @@ spec:
             To do this, we use Copper's simple DSL to check the configuration validation:
 <pre class="prettyprint">
 rule NoLatest ensure {  // use of latest as image tag is not allowed
-    fetch("$.spec.template.spec.containers[?(@.name == 'mysql')].image")
-        .extract(".*:(.*)", 1)
+    fetch("$.spec.template.spec.containers..image")
+        .as(:Image)
+        .pick(:tag)
         .contains("latest") == false
-}
+    }
 </pre>
         </p>
         <p>
