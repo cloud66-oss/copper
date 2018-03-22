@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    copper (0.0.1)
+    c66-copper (0.0.1)
       colorize (~> 0.8)
       ipaddress (~> 0.8)
       json (~> 2.1)
@@ -46,7 +46,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.14)
   byebug (~> 10.0)
-  copper!
+  c66-copper!
   rake (~> 10.0)
   rerun (~> 0.13)
 

@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'copper/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "copper"
+  spec.name          = "c66-copper"
   spec.version       = Copper::VERSION
   spec.authors       = ["Khash Sajadi"]
   spec.email         = ["khash@cloud66.com"]

@@ -18,14 +18,14 @@ Copper is available as a Ruby gem. We recommend installing Copper using Rubygems
 To install Copper, use the following command:
 
 <kbd>
-$ gem install copper
+$ gem install c66-copper
 </kbd>
 
 You should now be able to run <kbd>$ copper version</kbd> successfully.
 
 ## Copper DSL
 
-To define the rules, Copper uses a simple DLS. The Copper DSL looks like Javascript and is very easy to use. The Copper DSL has specific built-in features that are useful in writing rules for Kubernetes configuration files.
+To define the rules, Copper uses a simple DSL. The Copper DSL looks like Javascript and is very easy to use. The Copper DSL has specific built-in features that are useful in writing rules for Kubernetes configuration files.
 
 Rules are stored in files and each file can contain one of many rules. You can run a rule file against a configuration file using Copper CLI.
 
@@ -41,7 +41,7 @@ rule ApiV1Only ensure {
 
 ### Let's break this down
 
-**Line 1**: Define a rule called `ApiV1Only`. We want to make sure this rule is always applied and the validation fails if the rule is broken, we we make the rule an `ensure` one.
+**Line 1**: Define a rule called `ApiV1Only`. We want to make sure this rule is always applied and the validation fails if the rule is broken, so we we make the rule an `ensure` one.
 
 **Line 2**: We use the `fetch` function to get the value of a node in the configuration file. `fetch` always returns an array of all found matches so we use `.first` to get the first one and compare it with `"v1"` string.
 
@@ -66,7 +66,7 @@ Let's save this file as `service.yml` and validate it.
 
 ### Using Copper CLI
 
-With your rule `my_rule.cop` and configuration file `service.yml` at hand, hit the Copper CLI:
+With your rule `my_rule.cop` and configuration file `service.yml` to hand, hit the Copper CLI:
 
 <kbd>
 $ copper check --rules my_rule.cop --file service.yml

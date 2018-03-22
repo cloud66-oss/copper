@@ -18,9 +18,9 @@ module Copper
 		def update
 			say "Updating Copper..."
 			unless options[:version]
-				say `gem install copper --no-ri --no-rdoc`
+				say `gem install c66-copper --no-ri --no-rdoc`
 			else
-				say `gem install copper -v #{options[:version]} --no-ri --no-rdoc`
+				say `gem install c66-copper -v #{options[:version]} --no-ri --no-rdoc`
 			end
 		end
 
@@ -51,12 +51,15 @@ module Copper
 			raise ::NotImplementedError if options[:format] != 'yaml'
 			# load the yaml file and split them into separate yamls
 
+			failed = false
 			content = File.read(content_file)
 			content.split('---').each_with_index do |part, idx|
 				puts "Validating part #{idx}"
 				file = YAML::load(part)
-				validate(rules, file)
+				failed = validate(rules, file)
 			end
+
+			exit(1) if failed
 		end
 
 		no_commands {
@@ -66,9 +69,10 @@ module Copper
 
 			if results.nil?
 				puts "Aborting"
-				exit
+				exit(2)
 			end
 
+			failed = false
 			results.each do |rule|
 				action = rule[:action]
 				outcome = rule[:outcome]
@@ -76,6 +80,7 @@ module Copper
 					if action == :warn
 						outcome_text = 'WARN'.yellow
 					else
+						failed = true
 						outcome_text = 'FAIL'.red
 					end
 				else
@@ -83,11 +88,15 @@ module Copper
 				end
 				puts "\t#{rule[:name]} - #{outcome_text}"
 			end
+			return failed
 		rescue ::Copper::ParseError => exc
 			puts "Syntax error: #{exc.message} at line #{ccop.parser.failure_line}, column: #{ccop.parser.failure_column}"
+			return true
 		rescue ::Copper::RuntimeError => exc
 			puts "Runtime error: #{exc.message}"
+			return true
 		end
+
 		}
 
 	end

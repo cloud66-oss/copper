@@ -2,17 +2,15 @@ require 'ipaddress'
 
 module Copper
   module Functions
-	class IPAddress < CopperNode
+	class Semver < CopperNode
 
 		include ::Copper::ExpressionUtils
 
 		def value(vars = {})
-			ipaddress = elements[0].value(vars)
-			result = ::IPAddress.parse(ipaddress)
+			semver = elements[0].value(vars)
+			result = ::Semantic::Version.new(semver)
 
 			return handle_attributes(result, vars)
-		rescue ArgumentError => exc
-			raise RuntimeError, exc.message
 		end
 
 	end

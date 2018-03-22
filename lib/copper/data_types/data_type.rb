@@ -10,15 +10,10 @@ module Copper
 				"Range" => "::Copper::DataTypes::Range",
 				"IPAddress" => "::Copper::DataTypes::IPAddress",
 				"IPAddress::IPv4" => "::Copper::DataTypes::IPAddress",
-				"IPAddress::IPv6" => "::Copper::DataTypes::IPAddress"
-			}
-
-			RESEVERED_TYPES = {
-				semver: "Semver",
-				array: "Array",
-				string: "String",
-				range: "Range",
-				ipaddr: "IPAddress"
+				"IPAddress::IPv6" => "::Copper::DataTypes::IPAddress",
+				"Copper::DataTypes::Image" => "::Copper::DataTypes::Image",
+				"Image" => "::Copper::DataTypes::Image",
+				"Copper::DataTypes::ImageClass" => "::Copper::DataTypes::Image"
 			}
 
 			def initialize(value)
@@ -44,7 +39,7 @@ module Copper
 			end
 
 			def self.get_class(class_name)
-				raise RuntimeError, "unknown return value #{class_name}" unless ::Copper::DataTypes::DataType::CLASS_MAP.has_key?(class_name)
+				raise RuntimeError, "unknown class #{class_name}" unless ::Copper::DataTypes::DataType::CLASS_MAP.has_key?(class_name)
 				return Module.const_get(::Copper::DataTypes::DataType::CLASS_MAP[class_name])
 			rescue NameError => exc
 				raise ::Copper::RuntimeError, "invalid return type #{class_name}"

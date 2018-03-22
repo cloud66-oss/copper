@@ -8,6 +8,7 @@ module Copper
 
 			raise ParseError, "cannot compare nil" if rhs.nil? || lhs.nil?
 
+			puts "[DEBUG] Comparing #{lhs} (#{lhs.class.name}) #{comp_op} #{rhs} (#{rhs.class.name})" if $debug
 			begin
 				case comp_op
 				when '='
@@ -46,7 +47,7 @@ module Copper
 		private
 
 		def equality(lhs, rhs)
-			if lhs.is_a?(Array) && rhs.is_a?(Array)
+			if lhs.is_a?(::Array) && rhs.is_a?(::Array)
 				return lhs.sort == rhs.sort
 			else
 				return lhs == rhs

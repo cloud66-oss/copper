@@ -2,6 +2,15 @@ var a = "$" // comment
 // some comment
 var b = 1
 var c = ipaddress("62.0.0.0/32")
+var s = semver("2.3.4")
+var i = image("ubuntu:2.3.4")
+
+rule e0 ensure {
+	fetch("$.spec.template.spec.containers..image")
+		.as(:Image)
+		.pick(:tag)
+		.contains("latest") -> console
+}
 
 // and more
 // and more and more
@@ -48,25 +57,28 @@ rule e3 ensure {
 
 rule e4 warn {
 	fetch("$.spec.template.spec.containers..image")
-		.extract(".*:(.*)", 1).contains("latest") -> console
+	.as(:Image)
+	.pick(:tag)
+	.as(:Semver) -> console
 }
 
 rule e5 warn {
 	fetch("$.spec.template.spec.containers[?(@.name=='bar')].image")
-		.extract(".*:(.*)", 1)
-		.as(semver) -> console
+		.as(:Image)
+		.pick(:tag)
+		.as(:Semver) -> console
 }
 
 rule e6 warn {
-	fetch("$.spec.template.spec.containers[?(@.name=='bar')].image")
+	fetch("$.spec.template.spec.containers[?(@.name=='mysql')].image")
 		.extract(".*:(.*)", 1)
 		.first
-		.as(semver)
+		.as(:Semver)
 		.satisfies("~> 2.3") -> console
 }
 
 rule e7 ensure {
-	"1.2.3".as(semver) < "1.2.4".as(semver)
+	"1.2.3".as(:Semver) < "1.2.4".as(:Semver)
 }
 
 rule e8 ensure {

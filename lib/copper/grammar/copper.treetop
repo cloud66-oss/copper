@@ -37,7 +37,7 @@ grammar Copper
 	end
 
 	rule expression
-		s (string / number / boolean / func / variable / set / range) <Expression>
+		s (string / number / boolean / func / variable / set / range / symbol) <Expression>
 	end
 
 	rule logic_right_associated
@@ -65,7 +65,7 @@ grammar Copper
 	end
 
 	rule func
-		(fetch_func / func_ipaddress)
+		(fetch_func / func_ipaddress / func_semver / func_image)
 	end
 
 	rule fetch_func
@@ -74,6 +74,14 @@ grammar Copper
 
 	rule func_ipaddress
 		'ipaddress' s '(' (string / variable) s ')' (attributes)? <Functions::IPAddress>
+	end
+
+	rule func_semver
+		'semver' s '(' (string / variable) s ')' (attributes)? <Functions::Semver>
+	end
+
+	rule func_image
+		'image' s '(' (string / variable) s ')' (attributes)? <Functions::Image>
 	end
 
 	rule attributes
@@ -118,6 +126,10 @@ grammar Copper
 
 	rule number
 		[0-9]+ <Number>
+	end
+
+	rule symbol
+		':' ([a-zA-Z] [a-zA-Z0-9_]*) <Symbol>
 	end
 
 	rule comp_op

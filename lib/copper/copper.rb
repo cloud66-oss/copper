@@ -4,8 +4,6 @@ module Copper
 			@content = content
 			@vars = vars
 
-			# add the resevered ones
-			@vars[:variables] = ::Copper::DataTypes::DataType::RESEVERED_TYPES
 			@parser = Parser.new
 		end
 
