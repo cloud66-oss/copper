@@ -11,6 +11,8 @@ module Copper
 			result = ::IPAddress.parse(ipaddress)
 
 			return handle_attributes(result, vars)
+		rescue ArgumentError => exc
+			raise RuntimeError, exc.message
 		end
 
 	end
