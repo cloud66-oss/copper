@@ -1,12 +1,12 @@
-rule apiVersion ensure { # a simple check for api version
+rule apiVersion ensure { // a simple check for api version
 	fetch("$.apiVersion").first == "v1"
 }
 
-rule hasNamespace ensure { # a rule to make sure there is a namespace
+rule hasNamespace ensure { // a rule to make sure there is a namespace
 	fetch("$.metadata.namespace").count != 0
 }
 
-rule portsAreCorrect warn { # warn if the ports are changed
+rule portsAreCorrect warn { // warn if the ports are changed
 	fetch("$.spec.ports..port") == [5000, 8080, 8100] and
 	fetch("$.spec.ports[0].port").first >= 8000 and
 	fetch("$.spec.ports[0].port").first < 9000

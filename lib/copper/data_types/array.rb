@@ -48,6 +48,16 @@ module Copper
 				return result
 			end
 
+			def pick(attribute)
+				return @value.map do |x|
+					if x.respond_to?(attribute.to_sym)
+						x.send(attribute.to_sym)
+					else
+						raise ParseError, "#{attribute} is not a valid attribute on #{x.class.name}"
+					end
+				end
+			end
+
 			def unique
 				@value.uniq
 			end

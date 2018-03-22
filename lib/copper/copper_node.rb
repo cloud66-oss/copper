@@ -5,6 +5,7 @@ module Copper
 		protected
 
 		def console(text)
+			text = text.to_s if text.respond_to?(:to_s)
 			puts "[DEBUG] #{self.class.name} ==> #{text} (#{text.class.name})" if $debug
 		end
 
