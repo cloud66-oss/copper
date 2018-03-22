@@ -18,7 +18,7 @@ Copper is available as a Ruby gem. We recommend installing Copper using Rubygems
 To install Copper, use the following command:
 
 <kbd>
-$ gem install copper
+$ gem install c66-copper
 </kbd>
 
 You should now be able to run <kbd>$ copper version</kbd> successfully.

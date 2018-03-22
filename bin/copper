@@ -18,9 +18,9 @@ module Copper
 		def update
 			say "Updating Copper..."
 			unless options[:version]
-				say `gem install copper --no-ri --no-rdoc`
+				say `gem install c66-copper --no-ri --no-rdoc`
 			else
-				say `gem install copper -v #{options[:version]} --no-ri --no-rdoc`
+				say `gem install c66-copper -v #{options[:version]} --no-ri --no-rdoc`
 			end
 		end
 
