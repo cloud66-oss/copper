@@ -27,8 +27,15 @@ module Copper
 			end
 
 			def in(value)
-				raise ::Copper::RuntimeError, "#{value} is not an IP address" unless value.is_a?(::IPAddress)
-				(@value.first.to_i <= value.to_i) && (@value.last.to_i >= value.to_i)
+				if value.is_a?(::Copper::DataTypes::IPAddress)
+					to_check = value.ip_address
+				elsif value.is_a?(::IPAddress)
+					to_check = value
+				else
+					raise ::Copper::RuntimeError, "#{value} is not an IP address"
+				end
+
+				(@value.first.to_i <= to_check.to_i) && (@value.last.to_i >= to_check.to_i)
 			end
 
 			def full_address
@@ -75,6 +82,13 @@ module Copper
 				@value.c?
 			end
 
+			def ip_address
+				@value
+			end
+
+			def to_s
+				@value.to_string
+			end
 		end
 
 	end

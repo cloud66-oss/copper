@@ -10,7 +10,8 @@ metadata:
     app: foo
     tier: bar
 spec:
-  type: NodePort
+  type: LoadBalancer
+  loadBalancerIP: 10.10.10.10
   ports:
   - port: 8080
     targetPort: 8090

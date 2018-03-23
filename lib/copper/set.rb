@@ -4,7 +4,13 @@ module Copper
 		include ::Copper::ExpressionUtils
 
 		def value(vars = {})
-			return handle_attributes(elements[0].value(vars), vars)
+			result = elements[0].value(vars)
+			if result.is_a?(::Array)
+				v = result
+			else
+				v = [result]
+			end
+			return handle_attributes(v, vars)
 		end
 
 	end

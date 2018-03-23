@@ -15,7 +15,16 @@ module Copper
 				"Image" => "::Copper::DataTypes::Image",
 				"Copper::DataTypes::ImageClass" => "::Copper::DataTypes::Image",
 				"Copper::DataTypes::FilenameClass" => "::Copper::DataTypes::Filename",
-				"Copper::DataTypes::Filename" => "::Copper::DataTypes::Filename"
+				"Copper::DataTypes::Filename" => "::Copper::DataTypes::Filename",
+				"Filename" => "::Copper::DataTypes::Filename"
+			}
+
+			DATATYPE_MAP = {
+				"semver" => "Semver",
+				"ipaddress" => "IPAddress",
+				"image" => "Image",
+				"range" => "Range",
+				"filename" => "Filename",
 			}
 
 			def initialize(value)
@@ -27,9 +36,11 @@ module Copper
 			end
 
 			def as(clazz)
-				clazz = clazz.capitalize
+				clazz = ::Copper::DataTypes::DataType::DATATYPE_MAP[clazz]
+				raise RuntimeError, "No class called #{clazz} found" if clazz.nil?
+
 				found_class = ::Copper::DataTypes::DataType.get_class(clazz)
-				return found_class.new(@value).value
+				return found_class.new(@value)
 			end
 
 			# returns a DataType based on the given PORO
