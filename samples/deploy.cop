@@ -1,6 +1,7 @@
 rule NoLatest ensure {  // use of latest as image tag is not allowed
-    fetch("$.spec.template.spec.containers..image")
-        .extract(".*:(.*)", 1)
+	fetch("$.spec.template.spec.containers..image")
+        .as(:image)
+        .pick(:tag)
         .contains("latest") == false
 }
 

@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug", "~> 10.0"
 
   spec.add_dependency 'jsonpath', '~>0.8'
-  spec.add_dependency 'json', '~> 2.1'
+  spec.add_dependency 'json', '~> 1.4'
   spec.add_dependency 'thor', '~> 0.20'
   spec.add_dependency 'treetop', '~> 1.6'
   spec.add_dependency 'colorize', '~> 0.8'

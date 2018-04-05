@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    c66-copper (0.0.2)
+    c66-copper (0.0.3)
       colorize (~> 0.8)
       ipaddress (~> 0.8)
-      json (~> 2.1)
+      json (~> 1.4)
       jsonpath (~> 0.8)
       semantic (~> 1.6)
       thor (~> 0.20)
@@ -17,7 +17,7 @@ GEM
     colorize (0.8.1)
     ffi (1.9.23)
     ipaddress (0.8.3)
-    json (2.1.0)
+    json (1.8.3)
     jsonpath (0.8.11)
       multi_json
       to_regexp (~> 0.2.1)
