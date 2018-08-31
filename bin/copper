@@ -36,23 +36,40 @@ module Copper
 			require 'byebug' if $debug
 
 			rule_file = options[:rules]
+			if !rule_file
+				puts "No rule file provided. Use --rule option".red
+				exit(1)
+			end
+
 			unless File.exists?(rule_file)
 				puts "Rule file #{rule_file} not found".red
 				exit(1)
 			end
 			content_file = options[:file]
+			if !content_file
+				puts "No config file provided. Use --file option".red
+				exit(1)
+			end
+
 			unless File.exists?(content_file)
 				puts "Config file #{content_file} not found".red
 				exit(1)
 			end
 
 			rules = File.read(rule_file)
-			file = ""
+			if rules.empty?
+				puts "Empty rules file".red
+				exit(2)
+			end
 			raise ::NotImplementedError if options[:format] != 'yaml'
 			# load the yaml file and split them into separate yamls
 
 			failed = false
 			content = File.read(content_file)
+			if content.empty?
+				puts "Empty config file".red
+				exit(2)
+			end
 			content.split('---').each_with_index do |part, idx|
 				puts "Validating part #{idx}"
 				file = YAML::load(part)

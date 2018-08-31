@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    c66-copper (0.0.3)
+    c66-copper (0.0.4)
       colorize (~> 0.8)
       ipaddress (~> 0.8)
       json (~> 1.4)
@@ -17,8 +17,8 @@ GEM
     colorize (0.8.1)
     ffi (1.9.23)
     ipaddress (0.8.3)
-    json (1.8.3)
-    jsonpath (0.8.11)
+    json (1.8.6)
+    jsonpath (0.9.4)
       multi_json
       to_regexp (~> 0.2.1)
     listen (3.1.5)
@@ -37,7 +37,7 @@ GEM
     semantic (1.6.1)
     thor (0.20.0)
     to_regexp (0.2.1)
-    treetop (1.6.9)
+    treetop (1.6.10)
       polyglot (~> 0.3)
 
 PLATFORMS
@@ -51,4 +51,4 @@ DEPENDENCIES
   rerun (~> 0.13)
 
 BUNDLED WITH
-   1.16.1
+   1.16.4

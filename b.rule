@@ -1,0 +1,3 @@
+rule abc warn {
+    fetch("") -> console
+}
