@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    c66-copper (0.0.4)
+    c66-copper (0.0.5)
       colorize (~> 0.8)
       ipaddress (~> 0.8)
       json (~> 1.4)

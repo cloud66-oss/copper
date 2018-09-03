@@ -7,12 +7,12 @@ module Copper
 			end
 
 			def first
-				raise RuntimeError, "cannot call first on an empty array" if @value.empty?
+				return nil if @value.empty?
 				return @value.first
 			end
 
 			def last
-				raise RuntimeError, "cannot call last on an empty array" if @value.empty?
+				return nil if @value.empty?
 				return @value.last
 			end
 

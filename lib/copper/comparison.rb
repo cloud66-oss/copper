@@ -6,7 +6,8 @@ module Copper
 			comp_op = elements[1].value(vars)
 			rhs = elements[2].value(vars)
 
-			raise ParseError, "cannot compare nil" if rhs.nil? || lhs.nil?
+			return true if rhs.nil? && lhs.nil?
+			return false if rhs.nil? || lhs.nil?
 
 			puts "[DEBUG] Comparing #{lhs} (#{lhs.class.name}) #{comp_op} #{rhs} (#{rhs.class.name})" if $debug
 			begin
