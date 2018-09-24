@@ -73,7 +73,7 @@ module Copper
 			content.split('---').each_with_index do |part, idx|
 				puts "Validating part #{idx}"
 				file = YAML::load(part)
-				failed = validate(rules, file, content_file)
+				failed = true if validate(rules, file, content_file)
 			end
 
 			exit(1) if failed
