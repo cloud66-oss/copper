@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foos
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: foos
+  name: web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: central
+        tier: web
+    spec:
+      containers:
+        - image: us.gcr.io/gentle-mule/kickass:latest
+          name: web
+          ports:
+            - containerPort: 3000
+          command: ['bundle', 'exec', 'puma', '-b', 'tcp://0.0.0.0:3000']
+---
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: foos
+  name: starter
+  labels:
+    app: central
+    tier: web
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: central
+    tier: web
+---
+---
