@@ -51,3 +51,4 @@ build-iPhoneSimulator/
 /site/public
 /.byebug_history
 /.idea
+/.vscode
