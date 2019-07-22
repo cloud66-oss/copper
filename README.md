@@ -6,6 +6,10 @@ Copper is a simple tool for validate your configuration files. This is specifica
 
 NOTE: This is Copper v2.0 which is a rewrite of Copper v1.0 (and not an in-place upgrade). Copper v2.0 uses Javascript as it's scripting language instead of Copper v1.0's custom DSL. At the moment, we don't offer any upgrades for old Copper v1 scripts to Copper v2.
 
+
+![Copper Logo](https://blog.cloud66.com/content/images/2019/07/cloud66-copper.png)
+
+
 ## Installation
 
 Head to the releases section of this repository and download the latest version of Copper. You can update Copper using `copper update` command at any time. By default, you will be running the `stable` releases. To change the channel, you can use the `--channel` argument in `copper update`.
