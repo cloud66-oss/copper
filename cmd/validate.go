@@ -256,7 +256,17 @@ func fetchResult(vm *otto.Otto) ([]map[string]interface{}, error) {
 		return nil, err
 	}
 
-	result := jsArray.([]map[string]interface{})
+	var result []map[string]interface{}
+
+	switch v := jsArray.(type) {
+	default:
+		log.Fatalf("unexpected type: %T", v)
+	case []interface{}:
+		result = make([]map[string]interface{}, 0)
+	case []map[string]interface{}:
+		result = jsArray.([]map[string]interface{})
+	}
+
 	return result, nil
 }
 
