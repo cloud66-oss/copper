@@ -12,7 +12,6 @@ import (
 	"time"
 
 	"github.com/cloud66-oss/copper/utils"
-
 	"github.com/ghodss/yaml"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/robertkrimen/otto"
@@ -247,13 +246,21 @@ func fetchResult(vm *otto.Otto) ([]map[string]interface{}, error) {
 		logError(err)
 	}
 
-	if v.Object().Class() != "Array" {
-		log.Fatalf("errors is not an array")
+	obj := v.Object()
+	if obj == nil {
+		return nil, nil
+	}
+	if obj.Class() != "Array" {
+		log.Fatal("errors is not an array")
 	}
 
 	jsArray, err := v.Export()
 	if err != nil {
 		return nil, err
+	}
+
+	if _, ok := jsArray.([]interface{}); ok {
+		return nil, nil
 	}
 
 	result := jsArray.([]map[string]interface{})
