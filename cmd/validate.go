@@ -21,7 +21,7 @@ import (
 
 var modifyCmd = &cobra.Command{
 	Use:   "validate",
-	Short: "Run validatin script on the given input",
+	Short: "Run validation script on the given input",
 	Run:   validateExec,
 }
 
