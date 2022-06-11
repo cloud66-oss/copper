@@ -6,7 +6,6 @@ Copper is a simple tool for validate your configuration files. This is specifica
 
 NOTE: This is Copper v2.0 which is a rewrite of Copper v1.0 (and not an in-place upgrade). Copper v2.0 uses Javascript as it's scripting language instead of Copper v1.0's custom DSL. At the moment, we don't offer any upgrades for old Copper v1 scripts to Copper v2.
 
-- Help Pages: https://help.cloud66.com/copper/
 - Slack Channel: [Join Our Slack Community](https://communityinviter.com/apps/cloud66ers/cloud-66-community).
 - Articles: https://blog.cloud66.com/tag/copper/
 
